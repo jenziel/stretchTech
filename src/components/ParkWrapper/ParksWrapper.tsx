@@ -10,8 +10,9 @@ interface ParkWrapperProps {
   } | null;
 }
 
-const ParkWrapper: React.FC<ParkWrapperProps> = ({ park }) => {
-  //I'm defining a new React functional component. This component expects to receive props that match the ParkWrapperProps interface above. TypeScript will enforce it.
+function ParkWrapper(props: ParkWrapperProps) {
+  const { park } = props;
+
   if (!park) {
     return <div className="error">Park information is not available.</div>;
   }
@@ -39,6 +40,6 @@ const ParkWrapper: React.FC<ParkWrapperProps> = ({ park }) => {
       </ul>
     </div>
   );
-};
+}
 
 export default ParkWrapper;
