@@ -1,4 +1,4 @@
-.park-wrapper {
+.parks-wrapper {
   border: 1px solid #ccc;
   padding: 16px;
   margin: 16px;
@@ -6,21 +6,21 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.park-wrapper h1 {
+.parks-wrapper h1 {
   font-size: 24px;
   margin-bottom: 8px;
 }
 
-.park-wrapper p {
+.parks-wrapper p {
   font-size: 16px;
   margin-bottom: 16px;
 }
 
-.park-wrapper h2 {
+.parks-wrapper h2 {
   font-size: 20px;
   margin-bottom: 8px;
 }
 
-.park-wrapper ul {
+.parks-wrapper ul {
   list-style: disc inside;
 }

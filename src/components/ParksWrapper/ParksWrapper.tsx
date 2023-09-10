@@ -1,7 +1,7 @@
 import React from 'react';
 import './ParksWrapper.css';
 
-interface ParkWrapperProps {
+interface ParksWrapperProps {
   park: {
     id: string;
     fullName: string;
@@ -10,7 +10,7 @@ interface ParkWrapperProps {
   } | null;
 }
 
-function ParkWrapper(props: ParkWrapperProps) {
+function ParksWrapper(props: ParksWrapperProps) {
   const { park } = props;
 
   if (!park) {
@@ -19,7 +19,7 @@ function ParkWrapper(props: ParkWrapperProps) {
 
   if (!park.activities || park.activities.length === 0) {
     return (
-      <div className="park-wrapper">
+      <div className="parks-wrapper">
         <h1>{park.fullName}</h1>
         <p>{park.description}</p>
         <h2>Activities</h2>
@@ -29,7 +29,7 @@ function ParkWrapper(props: ParkWrapperProps) {
   }
 
   return (
-    <div className="park-wrapper">
+    <div className="parks-wrapper">
       <h1>{park.fullName}</h1>
       <p>{park.description}</p>
       <h2>Activities</h2>
@@ -42,4 +42,4 @@ function ParkWrapper(props: ParkWrapperProps) {
   );
 }
 
-export default ParkWrapper;
+export default ParksWrapper;
