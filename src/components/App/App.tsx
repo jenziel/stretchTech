@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
+import ParksWrapper from "../ParksWrapper/ParksWrapper";
 
 function App() {
   const [parks, setParks] = useState([]);
@@ -21,24 +22,50 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        console.log('data:', data);
-        setParks(data);
-        setIsLoading(false);
+        if (data && data.data) {
+          setParks(data);
+          setError("");
+          // console.log('data:', data);
+          // console.log('updated parks state', parks)
+          setIsLoading(false);
+        }
+        
+        
       })
-      .then(() =>{
-        console.log('parks:', parks)
-      })
+      // .then((parks) => {
+      //   if (parks.length > 0){
+      //     console.log('parks:', parks)
+      //   }
+        
+      // })
       .catch((response) => {
         setError(response || "failed to fetch parks!");
       });
   }
+
   useEffect(() => {
     getParksData();
   }, []);
 
+  useEffect(() => {
+    console.log('parks', parks)
+  }, [parks])
+
   return (
     <div className="App">
-      <LoadingComponent />
+      { isLoading ? ( 
+      <LoadingComponent /> 
+      ) : 
+      // newError ? (
+      //   <ErrorComponent />
+      // ) :
+       (
+        <h1>placeholder for homepage component -- aka Parks Wrapper</h1>
+      )
+
+
+      }
+      
     </div>
   );
 }
