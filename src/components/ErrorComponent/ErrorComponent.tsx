@@ -1,6 +1,6 @@
 import React from 'react';
 import './ErrorComponent.css';
-
+import sadComputer from '../../images/error.png'
 interface ErrorComponentProps {
     error: {
       message: string;
@@ -12,6 +12,7 @@ function ErrorComponent(props: ErrorComponentProps) {
     return (
         <div className="error-msg">
         <h1>Oops!</h1>
+        <img src={sadComputer} alt="sad computer"></img>
         {!error ? (
             <h2>Something went wrong.</h2>
         ) : (
