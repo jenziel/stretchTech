@@ -53,20 +53,17 @@ function App() {
 
   return (
     <div className="App">
-      { isLoading ? ( 
-      <LoadingComponent /> 
-      ) : 
-      // newError ? (
-      //   <ErrorComponent />
-      // ) :
-       (
-        <ErrorComponent />
-        // <h1>placeholder for homepage component -- aka Parks Wrapper</h1>
-      )
-
-
-      }
-      
+      <main>
+         {/* <Header /> */}
+      {newError ? ( 
+         <ErrorComponent />
+       ) :  isLoading ? ( 
+        <LoadingComponent /> 
+        ) : (
+          //Routes go here
+          <h1>placeholder content</h1>
+        )}
+      </main>
     </div>
   );
 }
