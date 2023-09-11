@@ -60,7 +60,8 @@ function App() {
       //   <ErrorComponent />
       // ) :
        (
-        <h1>placeholder for homepage component -- aka Parks Wrapper</h1>
+        <ErrorComponent />
+        // <h1>placeholder for homepage component -- aka Parks Wrapper</h1>
       )
 
 
