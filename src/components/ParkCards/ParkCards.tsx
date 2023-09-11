@@ -73,7 +73,7 @@ function ParkCards({ park }: { park: ParkProps }) {
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 // e.currentTarget.src = errorImage;
-                e.currentTarget.src = "/logo192.png"; 
+                e.currentTarget.src = "/logo.svg"; 
               }}
             />
           </div>
