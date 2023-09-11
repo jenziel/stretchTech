@@ -79,6 +79,7 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
+import Favorites from '../Favorites/Favorites';
 import { getParksData, getIndividualPark } from '../../ApiCalls';
 import { Routes, Route } from 'react-router-dom';
 
@@ -137,6 +138,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ParksWrapper parks={parks} />} />
         <Route path="/:id" element={<ParkDetails park={individualPark} />} />
+        {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
         <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
       </Routes>
       )}
