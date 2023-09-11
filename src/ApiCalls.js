@@ -1,7 +1,7 @@
 const API_BASE = 'https://developer.nps.gov/api/v1/';
 const API_KEY = '88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc';
 
-// Fetch request for getting all parks
+// Fetch all parks
 export function getParksData() {
   return fetch(`${API_BASE}parks?limit=500&api_key=${API_KEY}`)
     .then(response => {
@@ -12,7 +12,7 @@ export function getParksData() {
     });
 }
 
-// Fetch request for getting a park by parkCode
+// Fetch by parkCode
 export function getIndividualPark(parkCode) {
   return fetch(`${API_BASE}parks?parkCode=${parkCode}&api_key=${API_KEY}`)
     .then(response => {
