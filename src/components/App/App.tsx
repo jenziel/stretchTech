@@ -80,7 +80,7 @@ import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import { getParksData, getIndividualPark } from '../../ApiCalls';
-
+import Header from "../Header/Header"
 function App() {
   const [parks, setParks] = useState([]);
   const [individualPark, setIndividualPark] = useState(null);
@@ -123,18 +123,20 @@ function App() {
   }, [parks, individualPark]);
 
   return (
-    <div className="App">
+      <main className="App">
+        <Header />
       {isLoading ? (
         <LoadingComponent />
-      ) : newError ? (
-        <ErrorComponent error={{ message: newError }} />
-      ) : (
-        <>
-          <ParksWrapper parks={parks} />
-          <ParkDetails park={individualPark} />
+        ) : newError ? (
+          <ErrorComponent error={{ message: newError }} />
+          ) : (
+            <>
+            <h1>placeholder</h1>
+          {/* <ParksWrapper parks={parks} />
+          <ParkDetails park={individualPark} /> */}
         </>
       )}
-    </div>
+      </main>
   );
   
 }
