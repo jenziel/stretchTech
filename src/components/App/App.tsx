@@ -75,6 +75,7 @@ import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
 import Header from "../Header/Header"
+import HeroImage from "../HeroImage/HeroImage"
 import { getParksData, getIndividualPark } from '../../ApiCalls';
 import { Routes, Route } from 'react-router-dom';
 
@@ -109,6 +110,7 @@ function App() {
 
 <main className="App">
          <Header /> 
+         <HeroImage />
       {newError ? ( 
          <ErrorComponent error={{ message: newError }} />
        ) :  isLoading ? ( 
