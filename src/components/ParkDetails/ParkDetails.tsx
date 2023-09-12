@@ -19,7 +19,7 @@ function ParkDetails() {
     console.log('Fetching data for park with parkCode:', parkCode);
     getIndividualPark(parkCode)
       .then(data => {
-        console.log('Fetched data:', data);
+        console.log('Fetched data:', data); //console dont forget to remove
         if (data && data.data && data.data.length > 0) {
           setPark(data.data[0]);
         }

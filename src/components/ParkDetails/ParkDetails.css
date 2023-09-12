@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  /* text-align: center; */
   background-color: #16291b;
   color: #ffffff;
   padding: 40px;
@@ -108,7 +107,6 @@
   word-wrap: break-word; 
   margin-bottom: 8px;
 }
-
 
 @media (max-width: 768px) {
   .image-gallery div {

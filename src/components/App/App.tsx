@@ -7,21 +7,30 @@ import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
 import Header from "../Header/Header"
-import { getParksData, getIndividualPark } from '../../ApiCalls';
+import { getParksData } from '../../ApiCalls';
 import { Routes, Route } from 'react-router-dom';
 
+interface Park {
+  id: string;
+  name: string;
+}
+
+interface AppState {
+  parks: Park[];
+  isLoading: boolean;
+  newError: string;
+}
 
 function App() {
-  const [parks, setParks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [newError, setError] = useState("");
+  const [parks, setParks] = useState<AppState["parks"]>([]);
+  const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
+  const [newError, setError] = useState<AppState["newError"]>("");
 
   useEffect(() => {
     getParksData()
       .then((data) => {
         if (data && data.data) {
-          setParks(data.data);
-          console.log("All parks data:", data.data);
+          setParks(data.data as Park[]);  // type assertion
           setError("");
           setIsLoading(false);
         }
@@ -55,7 +64,6 @@ function App() {
       )}
     </main>
   );
-
-}
+};
 
 export default App;
