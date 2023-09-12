@@ -80,8 +80,10 @@ import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
+import Header from "../Header/Header"
 import { getParksData, getIndividualPark } from '../../ApiCalls';
 import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
   const [parks, setParks] = useState([]);
@@ -125,16 +127,14 @@ function App() {
   }, [parks, individualPark]);
 
   return (
-    <div className="App">
-      {isLoading ? (
-        <LoadingComponent />
-      ) : newError ? (
-        <ErrorComponent error={{ message: newError }} />
-      ) : (
-        // <>
-        //   <ParksWrapper parks={parks} />
-        //   <ParkDetails park={individualPark} />
-        // </>
+
+<main className="App">
+         <Header /> 
+      {newError ? ( 
+         <ErrorComponent error={{ message: newError }} />
+       ) :  isLoading ? ( 
+        <LoadingComponent /> 
+        ) : (
       <Routes>
         <Route path="/" element={<ParksWrapper parks={parks} />} />
         <Route path="/:id" element={<ParkDetails park={individualPark} />} />
@@ -142,7 +142,7 @@ function App() {
         <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
       </Routes>
       )}
-    </div>
+    </main>
   );
   
 }
