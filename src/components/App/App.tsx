@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
@@ -7,7 +6,7 @@ import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
 import Header from "../Header/Header"
-import { getParksData } from '../../ApiCalls';
+import { getParksData, getIndividualPark } from '../../ApiCalls';
 import { Routes, Route } from 'react-router-dom';
 
 interface Image {
@@ -28,7 +27,7 @@ interface AppState {
   isLoading: boolean;
   newError: string;
 }
-
+        
 function App() {
   const [parks, setParks] = useState<AppState["parks"]>([]);
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
@@ -50,11 +49,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log('Parks fetched:', parks);
+    console.log("Parks fetched:", parks);
   }, [parks]);
 
   return (
-
     <main className="App">
       <Header />
       {newError ? (
@@ -73,5 +71,6 @@ function App() {
     </main>
   );
 };
+
 
 export default App;
