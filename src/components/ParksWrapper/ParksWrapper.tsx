@@ -4,8 +4,13 @@ import { ParkCards, ParkProps } from "../ParkCards/ParkCards";
 import HeroImage from "../HeroImage/HeroImage";
 
 function ParksWrapper({ parks }: { parks: ParkProps[] }) {
-  const parkCards = parks.map((park) => {
-    return <ParkCards park={park} key={park.id} />;
+  const parkCards = parks.map(park => {
+    return (
+      <ParkCards
+        park={park}
+        key={park.parkCode}
+      />
+    );
   });
 
   return (
