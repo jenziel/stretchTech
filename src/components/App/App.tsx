@@ -10,9 +10,17 @@ import Header from "../Header/Header"
 import { getParksData } from '../../ApiCalls';
 import { Routes, Route } from 'react-router-dom';
 
+interface Image {
+  url: string;
+  altText: string;
+}
+
 interface Park {
   id: string;
   name: string;
+  parkCode: string;
+  fullName: string;
+  images: Image[];
 }
 
 interface AppState {
@@ -30,7 +38,7 @@ function App() {
     getParksData()
       .then((data) => {
         if (data && data.data) {
-          setParks(data.data as Park[]);  // type assertion
+          setParks(data.data as Park[]);
           setError("");
           setIsLoading(false);
         }
