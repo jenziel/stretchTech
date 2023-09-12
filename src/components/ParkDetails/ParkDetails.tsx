@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getIndividualPark } from '../../ApiCalls';
 import './ParkDetails.css';
 
 interface ParkDetailsProps {
-  park: {
-    id: string;
-    fullName: string;
-    description: string;
-    activities: Array<{ id: string; name: string }>;
-    images: Array<{ url: string; altText: string }>;
-  } | null;
+  parkCode: string; 
+  fullName: string;
+  description: string;
+  activities: Array<{ id: string; name: string }>;
+  images: Array<{ url: string; altText: string }>;
 }
 
-function ParkDetails(props: ParkDetailsProps) {
-  const { park } = props;
+function ParkDetails() {
+  const { parkCode } = useParams<{ parkCode: string }>();
+  const [park, setPark] = useState<ParkDetailsProps | null>(null);
+
+  useEffect(() => {
+    console.log('Fetching data for park with parkCode:', parkCode);
+    getIndividualPark(parkCode)
+      .then(data => {
+        console.log('Fetched data:', data);
+        if (data && data.data && data.data.length > 0) {
+          setPark(data.data[0]);
+        }
+      })
+      .catch(error => {
+        console.error("Failed to fetch individual park:", error);
+      });
+  }, [parkCode]); 
 
   if (!park) {
     return <div className="error">Park information is not available.</div>;

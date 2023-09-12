@@ -7,7 +7,7 @@ function ParksWrapper({ parks }: { parks: ParkProps[] }) {
     return (
       <ParkCards
         park={park}
-        key={park.id}
+        key={park.parkCode}
       />
     );
   });

@@ -1,23 +1,32 @@
 .park-card {
-  border: 2px solid #4e8248;
-  border-radius: 8px;
+  border: 2px solid #2c5d36;
+  border-radius: 12px;
   padding: 16px;
   margin: 16px;
-  background-color: #f5f9f4;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease-in-out;
+  background: linear-gradient(45deg, #f5f9f4, #f0f4f8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 10px 5px rgba(0, 255, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  min-height: 300px; 
 }
 
 .park-card:hover {
   padding: 15px;
-  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.3), 0 0 10px 5px rgba(0, 255, 0, 0.3);
 }
 
+.no-underline {
+  text-decoration: none;
+}
 
 .park-card h3 {
   color: #2c5d36;
-  font-size: 24px;
+  font-size: 21px;
   margin-bottom: 12px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 .image-gallery {
@@ -30,8 +39,18 @@
   flex: 1;
 }
 
-.image-gallery img {
+.park-card .image-gallery img {
   max-width: 100%;
-  border-radius: 4px;
+  height: 200px;
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  object-fit: contain;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.park-card .image-gallery img:hover {
+  transform: scale(1.1);
 }
