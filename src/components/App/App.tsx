@@ -79,8 +79,12 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
-import { getParksData, getIndividualPark } from '../../ApiCalls';
+import Favorites from '../Favorites/Favorites';
 import Header from "../Header/Header"
+import { getParksData, getIndividualPark } from '../../ApiCalls';
+import { Routes, Route } from 'react-router-dom';
+
+
 function App() {
   const [parks, setParks] = useState([]);
   const [individualPark, setIndividualPark] = useState(null);
@@ -123,21 +127,22 @@ function App() {
   }, [parks, individualPark]);
 
   return (
-    
-      <main className="App">
+
+<main className="App">
          <Header /> 
       {newError ? ( 
          <ErrorComponent error={{ message: newError }} />
        ) :  isLoading ? ( 
         <LoadingComponent /> 
         ) : (
-          //Routes go here
-          <h1>placeholder content</h1>
-          // {/* <ParksWrapper parks={parks} />
-          // <ParkDetails park={individualPark} /> */}
-        )}
-      </main>
-  
+      <Routes>
+        <Route path="/" element={<ParksWrapper parks={parks} />} />
+        <Route path="/:id" element={<ParkDetails park={individualPark} />} />
+        {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
+        <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
+      </Routes>
+      )}
+    </main>
   );
   
 }
