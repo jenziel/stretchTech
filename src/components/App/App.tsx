@@ -123,20 +123,21 @@ function App() {
   }, [parks, individualPark]);
 
   return (
+    
       <main className="App">
-        <Header />
-      {isLoading ? (
-        <LoadingComponent />
-        ) : newError ? (
-          <ErrorComponent error={{ message: newError }} />
-          ) : (
-            <>
-            <h1>placeholder</h1>
-          {/* <ParksWrapper parks={parks} />
-          <ParkDetails park={individualPark} /> */}
-        </>
-      )}
+         <Header /> 
+      {newError ? ( 
+         <ErrorComponent error={{ message: newError }} />
+       ) :  isLoading ? ( 
+        <LoadingComponent /> 
+        ) : (
+          //Routes go here
+          <h1>placeholder content</h1>
+          // {/* <ParksWrapper parks={parks} />
+          // <ParkDetails park={individualPark} /> */}
+        )}
       </main>
+  
   );
   
 }
