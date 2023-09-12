@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getIndividualPark, ParkData } from '../../ApiCalls';
-
 import './ParkDetails.css';
-
-interface ParkDetailsProps {
-  parkCode: string;
-  fullName: string;
-  description: string;
-  activities: Array<{ id: string; name: string }>;
-  images: Array<{ url: string; altText: string }>;
-}
 
 function ParkDetails() {
   const { parkCode } = useParams<{ parkCode: string }>();
