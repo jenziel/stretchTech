@@ -1,53 +1,83 @@
 .park-details {
-    border: 1px solid #ccc;
-    padding: 16px;
-    margin: 16px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .park-details h1 {
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-  
-  .park-details p {
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-  
-  .park-details h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-  
-  .park-details ul {
-    list-style: disc inside;
-  }
-  
-  .image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .park-details .image-gallery div {
-    flex: 1;
-    max-width: calc(33.33% - 16px);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #16291b;
+  color: #ffffff;
+  padding: 40px;
+}
 
-  .image-gallery img {
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.park-details h1 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
 
-  @media (max-width: 768px) {
-    .image-gallery div {
-      max-width: calc(50% - 16px);
-    }
+.park-details p {
+  font-size: 18px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.park-details h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.park-details ul {
+  list-style: disc inside;
+  font-size: 18px;
+  margin-left: 24px;
+  margin-bottom: 24px;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.park-details .image-gallery div {
+  flex: 1;
+  max-width: calc(33.33% - 16px);
+}
+
+.image-gallery img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+} 
+
+.back-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #4CAF50; 
+  color: #fff; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-decoration: none;
+  text-align: center;
+}
+
+.back-button:hover {
+  background-color: #45a049; 
+}
+
+.back-button:focus {
+  outline: none;
+}
+
+
+
+@media (max-width: 768px) {
+  .image-gallery div {
+    max-width: calc(50% - 16px);
   }
-  
-  
+}

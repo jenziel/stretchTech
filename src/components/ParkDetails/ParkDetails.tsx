@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getIndividualPark } from '../../ApiCalls';
 import './ParkDetails.css';
 
 interface ParkDetailsProps {
-  parkCode: string; 
+  parkCode: string;
   fullName: string;
   description: string;
   activities: Array<{ id: string; name: string }>;
@@ -27,7 +27,7 @@ function ParkDetails() {
       .catch(error => {
         console.error("Failed to fetch individual park:", error);
       });
-  }, [parkCode]); 
+  }, [parkCode]);
 
   if (!park) {
     return <div className="error">Park information is not available.</div>;
@@ -37,6 +37,9 @@ function ParkDetails() {
     <div className="park-details">
       <h1>{park.fullName}</h1>
       <p>{park.description}</p>
+      <Link to="/" className="back-button">
+        Back to Home
+      </Link>
       <h2>Activities</h2>
       <ul>
         {park.activities.map((activity) => (
