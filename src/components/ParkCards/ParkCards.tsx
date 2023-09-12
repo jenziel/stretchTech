@@ -1,5 +1,6 @@
 import React from 'react';
 import './ParkCards.css';
+import { Link } from 'react-router-dom';
 
 interface ParkProps {
   id: string;
