@@ -7,6 +7,7 @@ function ParksWrapper({ parks }: { parks: ParkProps[] }) {
   
   const natParkCards = parks.filter((park) => park.designation === 'National Park')
   const parkCards = natParkCards.map(park => {
+    console.log('park', park)
     return (
       <ParkCards
         park={park}
