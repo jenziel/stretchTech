@@ -33,6 +33,8 @@ function ParkDetails() {
     return <div className="error">Park information is not available.</div>;
   }
 
+  const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
+
   return (
     <div className="park-details">
       <h1>{park.fullName}</h1>
@@ -40,19 +42,17 @@ function ParkDetails() {
       <Link to="/" className="back-button">
         Back to Home
       </Link>
-      <h2>Activities</h2>
-      <ul>
-        {park.activities.map((activity) => (
-          <li key={activity.id}>{activity.name}</li>
-        ))}
-      </ul>
-      <h2>Images</h2>
+      <div className="activities">
+        <h2>Activities</h2>
+        <ul>
+          {park.activities.map((activity) => (
+            <li key={activity.id}>{activity.name}</li>
+          ))}
+        </ul>
+      </div>
+      <h2>Random Image</h2>
       <div className="image-gallery">
-        {park.images.map((image, index) => (
-          <div key={index}>
-            <img src={image.url} alt={image.altText} />
-          </div>
-        ))}
+        {randomImage && <img src={randomImage.url} alt={randomImage.altText} />}
       </div>
     </div>
   );
