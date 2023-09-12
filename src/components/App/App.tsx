@@ -28,7 +28,7 @@
 //         setError(error.message || "Failed to fetch parks!");
 //         setIsLoading(false);
 //       });
-  
+
 //     // Fetching individual park by parkCode, for example 'acad'
 //     getIndividualPark('acad')
 //       .then((data) => {
@@ -40,9 +40,9 @@
 //       .catch((error) => {
 //         console.error("Failed to fetch individual park:", error);
 //       });
-  
+
 //   }, []);
-  
+
 //   useEffect(() => {
 //     console.log('Parks fetched:', parks);
 //     console.log('Individual park:', individualPark);
@@ -62,7 +62,7 @@
 //       )}
 //     </div>
 //   );
-  
+
 // }
 
 // export default App;
@@ -72,12 +72,11 @@ import "./App.css";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
-import ParkDetails from '../ParkDetails/ParkDetails';
-import Favorites from '../Favorites/Favorites';
-import Header from "../Header/Header"
-import { getParksData, getIndividualPark } from '../../ApiCalls';
-import { Routes, Route } from 'react-router-dom';
-
+import ParkDetails from "../ParkDetails/ParkDetails";
+import Favorites from "../Favorites/Favorites";
+import Header from "../Header/Header";
+import { getParksData, getIndividualPark } from "../../ApiCalls";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [parks, setParks] = useState([]);
@@ -100,30 +99,33 @@ function App() {
         setIsLoading(false);
       });
   }, []);
-  
+
   useEffect(() => {
-    console.log('Parks fetched:', parks);
+    console.log("Parks fetched:", parks);
   }, [parks]);
 
   return (
-
-<main className="App">
-         <Header /> 
-      {newError ? ( 
-         <ErrorComponent error={{ message: newError }} />
-       ) :  isLoading ? ( 
-        <LoadingComponent /> 
-        ) : (
-      <Routes>
-        <Route path="/" element={<ParksWrapper parks={parks} />} />
-        {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
-        {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
-        <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
-      </Routes>
+    <main className='App'>
+      <Header />
+      {newError ? (
+        <ErrorComponent error={{ message: newError }} />
+      ) : isLoading ? (
+        <LoadingComponent />
+      ) : (
+        <div> 
+          <Routes>
+            <Route path='/' element={<ParksWrapper parks={parks} />} />
+            {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
+            {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
+            <Route
+              path='/error'
+              element={<ErrorComponent error={{ message: newError }} />}
+            />
+          </Routes>
+        </div>
       )}
     </main>
   );
-  
 }
 
 export default App;
