@@ -116,7 +116,7 @@ function App() {
         ) : (
       <Routes>
         <Route path="/" element={<ParksWrapper parks={parks} />} />
-        <Route path="/:id" element={<ParkDetails park={individualPark} />} />
+        {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
         {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
         <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
       </Routes>
