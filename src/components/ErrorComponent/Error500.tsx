@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Error500.css';
 import errorImage from '../../images/error.png';
 
-function Error500() {
+function Error500(): JSX.Element { 
   return (
     <div className="error-page-container">
       <h1 className="error-heading">500 - Internal Server Error</h1>
