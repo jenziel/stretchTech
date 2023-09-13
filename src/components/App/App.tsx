@@ -21,6 +21,7 @@ interface Park {
   name: string;
   parkCode: string;
   fullName: string;
+  designation: string;
   images: Image[];
 }
 
@@ -37,14 +38,14 @@ function App() {
 
   useEffect(() => {
     getParksData()
-      .then((data) => {
+      .then((data: any) => {
         if (data && data.data) {
           setParks(data.data as Park[]);
           setError("");
           setIsLoading(false);
         }
       })
-      .catch((error) => {
+      .catch((error: any) => {
         setError(error.message || "Failed to fetch parks!");
         setIsLoading(false);
       });

@@ -6,6 +6,7 @@ interface ParkProps {
   parkCode: string;
   fullName: string;
   images: Array<{ url: string; altText: string }>;
+  designation: string;
 }
 
 function ParkCards({ park }: { park: ParkProps }) {
