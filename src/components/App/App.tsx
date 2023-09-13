@@ -34,6 +34,7 @@ function App() {
   const [parks, setParks] = useState<AppState["parks"]>([]);
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
   const [newError, setError] = useState<AppState["newError"]>("");
+
   useEffect(() => {
     getParksData()
       .then((data) => {
@@ -50,7 +51,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("Parks fetched:", parks);
+    console.log("Parks fetched:", parks);// console. dont forget to delete this useEffect.
   }, [parks]);
 
   return (

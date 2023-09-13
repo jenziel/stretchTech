@@ -10,7 +10,7 @@ function Error500(): JSX.Element {
       <img src={errorImage} alt="Error" className="error-image" /> 
       <div className="error-message">
         <h3>Oops! Something went wrong on our end.</h3>
-        <p>We're working to fix it. Please try again later.</p>
+        <p>We're working to fix it. 🌌 Please try again later.</p>
       </div>
       <NavLink to="/" style={{ textDecoration: 'none' }}>
         <button className="go-home-button" aria-label="Go back to the home page">Go Back to Home Page</button>
