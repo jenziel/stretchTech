@@ -65,6 +65,7 @@ function App() {
           {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
           <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
           <Route path="/500" element={<Error500 />} />
+          <Route path="/test-500" element={<Error500 />} />
           <Route path="/" element={<ParksWrapper parks={parks} />} />
           <Route path="/park/:parkCode" element={<ParkDetails />} />
           <Route path="*" element={<Navigate to="/404" />} />

@@ -8,9 +8,15 @@
     align-items: center;
   }
   
+  .error-image {
+    /* max-width: 200px; */
+    margin-top: -20%;
+  }
+
   .error-heading {
     font-size: 48px;
     margin-bottom: 20px;
+    margin-bottom: 20%;
   }
   
   .error-message h3 {

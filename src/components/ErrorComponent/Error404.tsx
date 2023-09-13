@@ -31,7 +31,7 @@ function Error404() {
         <button className="go-home-button" aria-label="Go back to the home page">Go Back to Home Page</button>
       </NavLink>
       <div className="fun-fact-container" aria-label="Fun park fact">
-      <h4 className="fun-fact-heading">Here's a park 🌲 fun fact to cheer you up:</h4>
+      <h2 className="fun-fact-heading">Here's a park 🌲 fun fact to cheer you up:</h2>
         <p className="fun-fact">{funFact}</p>
       </div>
       <div className="image-container">
