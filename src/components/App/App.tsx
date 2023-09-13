@@ -27,7 +27,7 @@ interface AppState {
   parks: Park[];
   isLoading: boolean;
   newError: string;
-  favorites: Park[];
+  favorites: Park[]; //use id as favorites state (string)
 }
         
 function App() {
