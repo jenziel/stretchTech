@@ -25,7 +25,7 @@ function ParkCards({ park }: { park: ParkProps }) {
                 alt={image.altText}
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/logo.svg";
+                  e.currentTarget.src = "/bearError.png";
                 }}
               />
             </div>
