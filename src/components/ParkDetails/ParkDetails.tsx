@@ -1,31 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getIndividualPark } from '../../ApiCalls';
+import { getIndividualPark, ParkData } from '../../ApiCalls';
 import './ParkDetails.css';
-
-interface ParkDetailsProps {
-  parkCode: string;
-  fullName: string;
-  description: string;
-  activities: Array<{ id: string; name: string }>;
-  images: Array<{ url: string; altText: string }>;
-}
 
 function ParkDetails() {
   const { parkCode } = useParams<{ parkCode: string }>();
-  const [park, setPark] = useState<ParkDetailsProps | null>(null);
+  const [park, setPark] = useState<ParkData | null>(null);
 
   useEffect(() => {
-    console.log('Fetching data for park with parkCode:', parkCode);
+    if (!parkCode) return;
+    console.log('Fetching data for park with parkCode:', parkCode); //console. don't forget to delete
     getIndividualPark(parkCode)
       .then(data => {
-        console.log('Fetched data:', data); //console dont forget to remove
-        if (data && data.data && data.data.length > 0) {
-          setPark(data.data[0]);
-        }
+        console.log('Fetched data:', data); //console. 
+        setPark(data);
       })
       .catch(error => {
-        console.error("Failed to fetch individual park:", error);
+        console.error("Failed to fetch individual park:", error);//console. don't forget to delete
       });
   }, [parkCode]);
 
@@ -52,7 +43,14 @@ function ParkDetails() {
       </div>
       <h2>Random Image</h2>
       <div className="image-gallery">
-        {randomImage && <img src={randomImage.url} alt={randomImage.altText} />}
+        {randomImage && <img
+          src={randomImage.url}
+          alt={randomImage.altText}
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = "/bearError.png";
+          }}
+        />}
       </div>
     </div>
   );
