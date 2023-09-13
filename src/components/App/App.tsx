@@ -27,12 +27,14 @@ interface AppState {
   parks: Park[];
   isLoading: boolean;
   newError: string;
+  favorites: Park[];
 }
         
 function App() {
   const [parks, setParks] = useState<AppState["parks"]>([]);
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
   const [newError, setError] = useState<AppState["newError"]>("");
+  const [favorites, setFavorites] = useState<AppState["favorites"]>([]);
 
   useEffect(() => {
     getParksData()
@@ -63,7 +65,7 @@ function App() {
       ) : (
         <Routes>
           {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
-          {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
+          <Route path="/favorites" element={<Favorites favorites={favorites} />} />
           <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
           <Route path="/" element={<ParksWrapper parks={parks} />} />
           <Route path="/park/:parkCode" element={<ParkDetails />} />
