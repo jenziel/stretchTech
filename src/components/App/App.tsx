@@ -30,7 +30,7 @@ interface AppState {
   isLoading: boolean;
   newError: string;
 }
-        
+
 function App() {
   const [parks, setParks] = useState<AppState["parks"]>([]);
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
@@ -46,7 +46,9 @@ function App() {
         }
       })
       .catch((error: any) => {
+        console.log("Caught an error: ", error);  //console. delete after you are done
         setError(error.message || "Failed to fetch parks!");
+        console.log("newError state set to: ", newError);  //console. delete after you are done
         setIsLoading(false);
       });
   }, []);
@@ -54,6 +56,10 @@ function App() {
   useEffect(() => {
     console.log("Parks fetched:", parks);// console. dont forget to delete this useEffect.
   }, [parks]);
+
+  useEffect(() => {
+    console.log("newError has been updated to:", newError);
+  }, [newError]);
 
   return (
     <main className="App">
@@ -64,15 +70,15 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
-          {/* <Route path="/favorites" element={<Favorites parks={parks} />} /> */}
-          <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
+          <Route path="/error" element={newError ? <ErrorComponent error={{ message: newError }} /> : <Navigate to="/" />} />
           <Route path="/500" element={<Error500 />} />
           <Route path="/test-500" element={<Error500 />} />
-          <Route path="/" element={<ParksWrapper parks={parks} />} />
+          <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} />} />
           <Route path="/park/:parkCode" element={<ParkDetails />} />
           <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<Error404 />} />
         </Routes>
+
       )}
     </main>
   );
