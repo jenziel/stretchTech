@@ -43,7 +43,14 @@ function ParkDetails() {
       </div>
       <h2>Random Image</h2>
       <div className="image-gallery">
-        {randomImage && <img src={randomImage.url} alt={randomImage.altText} />}
+        {randomImage && <img
+          src={randomImage.url}
+          alt={randomImage.altText}
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = "/bearError.png";
+          }}
+        />}
       </div>
     </div>
   );
