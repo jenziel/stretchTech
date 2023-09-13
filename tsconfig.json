@@ -2,12 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
-      "es5",
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "types": ["cypress"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -23,7 +21,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src", 
-    "**/*.ts"
+    "src"
   ]
 }
