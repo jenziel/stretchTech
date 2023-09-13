@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ErrorComponent from '../ErrorComponent/ErrorComponent'; 
 import './ParkCards.css';
 
 interface ParkProps {
@@ -11,7 +12,7 @@ interface ParkProps {
 
 function ParkCards({ park }: { park: ParkProps }) {
   if (!park || !park.images) {
-    return <div>Error: Park information is not available.</div>;
+    return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
 
   return (

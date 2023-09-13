@@ -36,6 +36,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
   const [newError, setError] = useState<AppState["newError"]>("");
 
+
   useEffect(() => {
     getParksData()
       .then((data: any) => {
@@ -61,27 +62,38 @@ function App() {
     console.log("newError has been updated to:", newError);
   }, [newError]);
 
+  const renderError = () => {
+    if (newError) {
+      return <ErrorComponent error={{ message: newError }} />;
+    }
+  };
+
   return (
     <main className="App">
       <Header />
       {newError ? (
-        <ErrorComponent error={{ message: newError }} />
+        renderError()
       ) : isLoading ? (
         <LoadingComponent />
       ) : (
         <Routes>
-          <Route path="/error" element={newError ? <ErrorComponent error={{ message: newError }} /> : <Navigate to="/" />} />
           <Route path="/500" element={<Error500 />} />
-          <Route path="/test-500" element={<Error500 />} />
+          {/* below is for testing onlyfor testing only */}
+          <Route path="/test-500" element={<Error500 />} /> 
           <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} />} />
           <Route path="/park/:parkCode" element={<ParkDetails />} />
           <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<Error404 />} />
         </Routes>
-
       )}
     </main>
   );
-};
+}
 
 export default App;
+
+
+
+
+
+
