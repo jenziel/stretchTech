@@ -3,7 +3,13 @@ import "./ParksWrapper.css";
 import { ParkCards, ParkProps } from "../ParkCards/ParkCards";
 import HeroImage from "../HeroImage/HeroImage";
 
-function ParksWrapper({ parks }: { parks: ParkProps[] }) {
+interface ParksWrapperProps {
+  parks: ParkProps[];
+  favorites: ParkProps[]; // Define favorites as a prop
+  setFavorites: (favorites: ParkProps[]) => void; // Define setFavorites as a prop if needed
+}
+
+function ParksWrapper({ parks, favorites, setFavorites }: ParksWrapperProps) {
   
   const natParkCards = parks.filter((park) => park.designation === 'National Park')
   const parkCards = natParkCards.map(park => {
@@ -12,6 +18,8 @@ function ParksWrapper({ parks }: { parks: ParkProps[] }) {
       <ParkCards
         park={park}
         key={park.parkCode}
+        favorites={favorites} // Pass favorites as a prop
+        setFavorites={setFavorites} // Pass setFavorites as a prop
       />
     );
   });
