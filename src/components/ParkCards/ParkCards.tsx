@@ -28,9 +28,8 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
 
   return (
     <Link to={`/park/${park.parkCode}`} style={{ textDecoration: 'inherit' }}> 
-      <div className='park-card'>
-        <h3>{park.fullName}</h3>
-        <div className="image-gallery">
+      <div className='park-card'> 
+        <div className="image-gallery park-card">
           {park.images.slice(0, 1).map((image, index) => (
             <div key={index}>
               <img
@@ -44,6 +43,7 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
             </div>
           ))}
         </div>
+        <h3 className="park-card-title">{park.fullName}</h3>
         <button className='favorite-button' onClick={addToFavorites}>⭐️</button> 
       </div>
     </Link>

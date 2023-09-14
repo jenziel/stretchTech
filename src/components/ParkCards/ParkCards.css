@@ -1,19 +1,15 @@
 .park-card {
-  border: 2px solid #2c5d36;
   border-radius: 12px;
-  padding: 16px;
-  background: linear-gradient(45deg, #f5f9f4, #f0f4f8);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 10px 5px rgba(0, 255, 0, 0.1);
+  background-color: transparent;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 10px 5px rgba(0, 255, 0, 0.1); */
   transition: all 0.3s ease-in-out;
   overflow: hidden;
-  width: 85%;
-  height: 85%;
 }
 
 .park-card:hover {
   padding: 15px;
   transform: scale(1.05);
-  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.3), 0 0 10px 5px rgba(0, 255, 0, 0.3);
+  /* box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.3), 0 0 10px 5px rgba(0, 255, 0, 0.3); */
 }
 
 .no-underline {
@@ -21,10 +17,10 @@
 }
 
 .park-card h3 {
-  color: #2c5d36;
+  color: white;
   font-size: 21px;
   margin-bottom: 12px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); */
   text-align: center;
   font-family: 'Roboto', Arial, sans-serif;
 }
@@ -56,6 +52,10 @@
 
 .park-card .image-gallery img:hover {
   transform: scale(1.1);
+}
+
+.park-card-title {
+  
 }
 
 @media (max-width: 768px) {

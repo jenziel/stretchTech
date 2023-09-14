@@ -80,7 +80,6 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
-
           <Route path="/500" element={<Error500 />} />
           {/* below is for testing onlyfor testing only */}
           <Route path="/test-500" element={<Error500 />} /> 
