@@ -16,12 +16,14 @@ interface ParkCardsProps {
 }
 
 function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
+  const [isFavorite, setIsFavorite] = useState(false);
 
   if (!park || !park.images) {
     return <div>Error: Park information is not available.</div>;
   }
 
   function addToFavorites() {
+    
     setFavorites([...favorites, park])
   }
 
