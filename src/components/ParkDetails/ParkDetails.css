@@ -109,7 +109,19 @@
 }
 
 @media (max-width: 768px) {
+  .park-details {
+    font-size: 0.9em;
+    padding: 1em;
+  }
   .image-gallery div {
     max-width: calc(50% - 16px);
+  }
+
+  .activities ul {
+    padding-left: 1em;
+  }
+
+  .image-gallery img {
+    width: 100%;
   }
 }
