@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import { getIndividualPark, ParkData } from '../../ApiCalls';
 import './ParkDetails.css';
 
@@ -21,9 +22,8 @@ function ParkDetails() {
   }, [parkCode]);
 
   if (!park) {
-    return <div className="error">Park information is not available.</div>;
+    return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
-
   const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
 
   return (
