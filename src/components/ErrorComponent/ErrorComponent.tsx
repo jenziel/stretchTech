@@ -69,8 +69,3 @@ function ErrorComponent(props: ErrorComponentProps) {
 }
 
 export default ErrorComponent;
-
-
-
-
-
