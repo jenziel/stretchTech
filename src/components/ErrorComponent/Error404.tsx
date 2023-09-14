@@ -31,11 +31,11 @@ function Error404() {
         <button className="go-home-button" aria-label="Go back to the home page">Go Back to Home Page</button>
       </NavLink>
       <div className="fun-fact-container" aria-label="Fun park fact">
-      <h2 className="fun-fact-heading">Here's a park 🌲 fun fact to cheer you up:</h2>
-        <p className="fun-fact">{funFact}</p>
+        <h2 className="fun-fact-heading">Here's a park 🌲 fun fact to cheer you up:</h2>
+        <p className="fun-fact">{funFact || "No fun facts available at the moment."}</p>
       </div>
       <div className="image-container">
-        <img src={bearImage} alt="Fun Bear Image" className="fun-bear-image" />
+        <img src={bearImage} alt="Fun Bear" className="fun-bear-image" />
       </div>
     </div>
   );

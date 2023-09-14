@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./ErrorComponent.css";
 import { NavLink } from 'react-router-dom';
-import ErrorBear from "../../images/ErrorBear.png";
 import Groundhog from "../../images/groundhog.png";
 
 const animalFacts = [
@@ -34,26 +33,16 @@ function ErrorComponent(props: ErrorComponentProps) {
     setRandomFact(animalFacts[randomIndex]);
   }, []);
 
-
-
   return (
     <div className='error-msg'>
       <h1>Oops! We're looking for it!</h1>
       <img src={Groundhog} alt='Groundhog'></img>
-  
-      {/* Display dynamic error message or a default one */}
       <h2>{error ? error.message : 'Something went wrong.'}</h2>
-  
-      {/* Optionally display status code */}
       {error && error.statusCode && <p>Status Code: {error.statusCode}</p>}
-  
-      {/* Random Animal Fact */}
       <h2>Random Animal Fact:</h2>
       <div className="fact-box"> 
         <h3>{randomFact}</h3>
       </div>
-  
-      {/* Other dynamic content based on error information */}
       {error && error.statusCode && (
         <div className="error-info">
           <p>Server Response Status: {error.statusCode}</p>
@@ -69,8 +58,3 @@ function ErrorComponent(props: ErrorComponentProps) {
 }
 
 export default ErrorComponent;
-
-
-
-
-
