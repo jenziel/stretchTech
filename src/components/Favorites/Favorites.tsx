@@ -3,13 +3,20 @@ import { ParkCards, ParkProps } from "../ParkCards/ParkCards";
 import HeroImage from "../HeroImage/HeroImage";
 import { Link } from "react-router-dom";
 
-function FavoritesWrapper({ favorites }: { favorites: ParkProps[] }) {
+interface FavoritesProps {
+  favorites: ParkProps[];
+  setFavorites: (favorites: ParkProps[]) => void;
+}
+
+function FavoritesWrapper({ favorites, setFavorites }: FavoritesProps) {
   
   console.log('fav-park', "favs")
   const parkCards = favorites.map(park => {
     return (
       <ParkCards
         park={park}
+        favorites={favorites} 
+        setFavorites={setFavorites}
         key={park.parkCode}
       />
     );
