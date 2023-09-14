@@ -80,16 +80,13 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
-<<<<<<< HEAD
-          <Route path="/500" element={<Error500 />} />
-          <Route path="/test-500" element={<Error500 />} /> 
-          <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} />} />
-=======
           {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
           <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
+          <Route path="/500" element={<Error500 />} />
+          <Route path="/test-500" element={<Error500 />} /> 
           <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
+          <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
           <Route path="/" element={<ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
->>>>>>> main
           <Route path="/park/:parkCode" element={<ParkDetails />} />
           <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<Error404 />} />
