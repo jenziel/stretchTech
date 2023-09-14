@@ -4,6 +4,7 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import Error404 from "../ErrorComponent/Error404";
 import Error500 from "../ErrorComponent/Error500";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
+import { ParkCards, ParkProps } from "../ParkCards/ParkCards";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
@@ -29,12 +30,14 @@ interface AppState {
   parks: Park[];
   isLoading: boolean;
   newError: string;
+  favorites: Park[]; //use id as favorites state (string)
 }
 
 function App() {
   const [parks, setParks] = useState<AppState["parks"]>([]);
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
   const [newError, setError] = useState<AppState["newError"]>("");
+  const [favorites, setFavorites] = useState<ParkProps[]>([]);
 
 
   useEffect(() => {
@@ -77,9 +80,16 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
+<<<<<<< HEAD
           <Route path="/500" element={<Error500 />} />
           <Route path="/test-500" element={<Error500 />} /> 
           <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} />} />
+=======
+          {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
+          <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
+          <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
+          <Route path="/" element={<ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
+>>>>>>> main
           <Route path="/park/:parkCode" element={<ParkDetails />} />
           <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<Error404 />} />
