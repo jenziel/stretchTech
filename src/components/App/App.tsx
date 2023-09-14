@@ -59,7 +59,7 @@ function App() {
   }, [parks]);
 
   useEffect(() => {
-    console.log("newError has been updated to:", newError);
+    console.log("newError updated to:", newError);
   }, [newError]);
 
   const renderError = () => {
@@ -78,7 +78,6 @@ function App() {
       ) : (
         <Routes>
           <Route path="/500" element={<Error500 />} />
-          {/* below is for testing only */}
           <Route path="/test-500" element={<Error500 />} /> 
           <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} />} />
           <Route path="/park/:parkCode" element={<ParkDetails />} />
