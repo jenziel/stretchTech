@@ -4,7 +4,7 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import Error404 from "../ErrorComponent/Error404";
 import Error500 from "../ErrorComponent/Error500";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
-import { ParkCards, ParkProps } from "../ParkCards/ParkCards";
+import { ParkProps } from "../ParkCards/ParkCards";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
@@ -62,9 +62,9 @@ function App() {
   }, [parks]);
 
   useEffect(() => {
-    console.log("newError updated to:", newError);
-  }, [newError]);
-
+    console.log("newError updated to:", newError); 
+  }, [newError]); 
+  
   const renderError = () => {
     if (newError) {
       return <ErrorComponent error={{ message: newError }} />;
@@ -80,7 +80,6 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
-          {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
           <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
           <Route path="/500" element={<Error500 />} />
           <Route path="/test-500" element={<Error500 />} /> 

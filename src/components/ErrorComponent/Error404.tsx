@@ -33,10 +33,9 @@ function Error404() {
       <div className="fun-fact-container" aria-label="Fun park fact">
         <h2 className="fun-fact-heading">Here's a park 🌲 fun fact to cheer you up:</h2>
         <p className="fun-fact">{funFact || "No fun facts available at the moment."}</p>
-        {/* <p className="fun-fact">{funFact}</p> */}
       </div>
       <div className="image-container">
-        <img src={bearImage} alt="Fun Bear Image" className="fun-bear-image" />
+        <img src={bearImage} alt="Fun Bear" className="fun-bear-image" />
       </div>
     </div>
   );
