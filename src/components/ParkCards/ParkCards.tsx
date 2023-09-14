@@ -15,7 +15,7 @@ function ParkCards({ park }: { park: ParkProps }) {
   }
 
   return (
-    <Link to={`/park/${park.parkCode}`}> 
+    <Link to={`/park/${park.parkCode}`} style={{ textDecoration: 'none' }}> 
       <div className='park-card'>
         <h3>{park.fullName}</h3>
         <div className="image-gallery">
