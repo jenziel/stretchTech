@@ -49,6 +49,5 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
     </Link>
   );
 }
-
 export { ParkCards };
 export type { ParkProps };

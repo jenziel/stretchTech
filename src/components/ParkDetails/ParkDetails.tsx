@@ -52,6 +52,14 @@ function ParkDetails() {
           }}
         />}
       </div>
+      <div className="additional-info">
+        <h2>Additional Information</h2>
+        <p><strong>Entrance Hours:</strong> {park.operatingHours.map(hour => hour.name).join(', ')}</p>
+        <p><strong>Location (State):</strong> {park.states}</p>
+        <p><strong>Entrance Fees:</strong> {park.entranceFees.map(fee => fee.title).join(', ')}</p>
+        <p><strong>Address:</strong> {park.addresses.map(address => address.line1).join(', ')}</p>
+        <p><strong>Phone Number:</strong> {park.contacts.phoneNumbers.map(phone => phone.phoneNumber).join(', ')}</p>
+      </div>
     </div>
   );
 }
