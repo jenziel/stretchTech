@@ -120,10 +120,3 @@ export function getIndividualPark(parkCode: string): Promise<ParkData> {
       throw new Error("No park found with the given parkCode");
     });
 }
-
-
-
-
-
-
-

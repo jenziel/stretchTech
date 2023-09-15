@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ErrorComponent from '../ErrorComponent/ErrorComponent'; 
 import './ParkCards.css';
 
 interface ParkProps {
@@ -17,7 +18,7 @@ interface ParkCardsProps {
 function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
 
   if (!park || !park.images) {
-    return <div>Error: Park information is not available.</div>;
+    return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
 
   function isFavorite() {
