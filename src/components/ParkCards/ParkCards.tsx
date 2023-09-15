@@ -37,7 +37,6 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
   return (
     <Link to={`/park/${park.parkCode}`} style={{ color: 'white', textDecoration: 'inherit' }}> 
     <div className='wrapper'>
-
       <div className='park-card'> 
         <div className="image-container">
           {park.images.slice(0, 1).map((image, index) => (

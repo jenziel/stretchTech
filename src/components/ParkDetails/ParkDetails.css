@@ -46,8 +46,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.park-details button,
-.park-details .back-button {
+.park-details>button,
+.park-details>.back-button {
   background: linear-gradient(to bottom, #4caf50, #45a049);
   color: #ffffff;
   border: none;

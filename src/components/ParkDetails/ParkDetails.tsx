@@ -28,7 +28,7 @@ function ParkDetails() {
     setVisibleFees(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
-  if (!park) {
+  if (!park ) {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
 

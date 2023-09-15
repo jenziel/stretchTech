@@ -38,20 +38,6 @@ function App() {
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
   const [newError, setError] = useState<AppState["newError"]>("");
   const [favorites, setFavorites] = useState<ParkProps[]>([]);
-  // const [isFavorite, setIsFavorite] = useState(false);
-
-  // function addToFavorites() {
-  //   setIsFavorite(!isFavorite);
-  //   if (isFavorite) {
-  //     console.log('isFalse');
-  //     const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
-  //     setFavorites(updatedFavorites);
-  //   } else {
-  //     console.log('isTrue');
-  //   setFavorites([...favorites, park]);
-  //   }
-  // }
-
 
   useEffect(() => {
     getParksData()

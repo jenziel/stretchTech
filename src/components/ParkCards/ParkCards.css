@@ -13,7 +13,8 @@
   /* padding: 15px;
   transform: scale(1.05); */
   /* box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.3), 0 0 10px 5px rgba(0, 255, 0, 0.3); */
-}
+  transition: background-color 0.3s ease
+  }
 
 .no-underline {
   text-decoration: none;
@@ -57,11 +58,17 @@
   height: 2.5rem; 
   width: 2.5rem;
   border-radius: 0.45rem;
+  background-color: white;
+  /* z-index: 2; */
   /* margin-right: 3rem; */
+}
+.favorite-button:hover {
+  transform:
 }
 
 .favorite-button.favorite {
   background-color: #2b783a; 
+  /* z-index: 1; */
 }
 
 @media (max-width: 768px) {
@@ -71,6 +78,7 @@
 
   .image-gallery img {
     width: 100%;
+    height: 100%;
   }
 }
 .park-card-lower {
