@@ -62,7 +62,7 @@
   text-decoration: none;
 }
 
-button:hover,
+
 .back-button:hover {
   background: linear-gradient(to bottom, #45a049, #4caf50);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
