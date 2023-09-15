@@ -25,7 +25,7 @@ function FavoritesWrapper({ favorites, setFavorites }: FavoritesProps) {
   return (
     <div className='App'>
       <HeroImage />
-      <Link to="/" className="back-button">
+      <Link to="/" className="back-button" style={{color: `inherit`, textDecoration: `inherit`}}>
         Back to Home
       </Link>
       <div className='favorites-container'>{parkCards}</div>
