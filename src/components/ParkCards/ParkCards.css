@@ -48,9 +48,9 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.park-card .image-gallery img:hover {
+/* .park-card .image-gallery img:hover {
   /* transform: scale(1.1); */
-}
+/* } */ 
 
 .favorite-button {
   background-image: url('../../images/parkbutton.png');
@@ -62,9 +62,9 @@
   /* z-index: 2; */
   /* margin-right: 3rem; */
 }
-.favorite-button:hover {
+/* .favorite-button:hover {
   transform:
-}
+} */
 
 .favorite-button.favorite {
   background-color: #2b783a; 
