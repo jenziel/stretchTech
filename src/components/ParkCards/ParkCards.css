@@ -54,8 +54,17 @@
   transform: scale(1.1);
 }
 
-.park-card-title {
-  
+.favorite-button {
+
+  background-image: url('../../images/parkbutton.png');
+  background-size: cover;
+  height: 2.5rem; 
+  width: 2.5rem;
+  border-radius: 0.45rem;
+}
+
+.favorite-button.favorite {
+  background-color: #2b783a; 
 }
 
 @media (max-width: 768px) {

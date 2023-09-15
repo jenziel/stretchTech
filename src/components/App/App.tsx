@@ -4,7 +4,7 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import Error404 from "../ErrorComponent/Error404";
 import Error500 from "../ErrorComponent/Error500";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
-import { ParkCards, ParkProps } from "../ParkCards/ParkCards";
+import { ParkProps } from "../ParkCards/ParkCards";
 import ParksWrapper from "../ParksWrapper/ParksWrapper";
 import ParkDetails from '../ParkDetails/ParkDetails';
 import Favorites from '../Favorites/Favorites';
@@ -38,6 +38,19 @@ function App() {
   const [isLoading, setIsLoading] = useState<AppState["isLoading"]>(true);
   const [newError, setError] = useState<AppState["newError"]>("");
   const [favorites, setFavorites] = useState<ParkProps[]>([]);
+  // const [isFavorite, setIsFavorite] = useState(false);
+
+  // function addToFavorites() {
+  //   setIsFavorite(!isFavorite);
+  //   if (isFavorite) {
+  //     console.log('isFalse');
+  //     const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
+  //     setFavorites(updatedFavorites);
+  //   } else {
+  //     console.log('isTrue');
+  //   setFavorites([...favorites, park]);
+  //   }
+  // }
 
 
   useEffect(() => {
@@ -62,9 +75,9 @@ function App() {
   }, [parks]);
 
   useEffect(() => {
-    console.log("newError has been updated to:", newError);
-  }, [newError]);
-
+    console.log("newError updated to:", newError); 
+  }, [newError]); 
+  
   const renderError = () => {
     if (newError) {
       return <ErrorComponent error={{ message: newError }} />;
@@ -80,26 +93,18 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
-          <Route path="/500" element={<Error500 />} />
-          {/* below is for testing onlyfor testing only */}
-          <Route path="/test-500" element={<Error500 />} /> 
-          <Route path="/" element={isLoading ? <LoadingComponent /> : <ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
-          {/* <Route path="/:id" element={<ParkDetails park={individualPark} />} /> */}
-          <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
-          <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
-          <Route path="/park/:parkCode" element={<ParkDetails />} />
-          <Route path="*" element={<Navigate to="/404" />} />
-          <Route path="/404" element={<Error404 />} />
-        </Routes>
+        <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
+        <Route path="/500" element={<Error500 />} />
+        <Route path="/test-500" element={<Error500 />} /> 
+        <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
+        <Route path="/" element={<ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
+        <Route path="/park/:parkCode" element={<ParkDetails />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="/404" element={<Error404 />} />
+      </Routes>      
       )}
     </main>
   );
 }
 
 export default App;
-
-
-
-
-
-
