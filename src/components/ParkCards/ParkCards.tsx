@@ -11,7 +11,7 @@ interface ParkProps {
 
 interface ParkCardsProps {
   park: ParkProps;
-  favorites: ParkProps[]; // Define favorites as a prop
+  favorites: ParkProps[];
   setFavorites: (favorites: ParkProps[]) => void;
 }
 
@@ -21,8 +21,17 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
 
-  function addToFavorites() {
-    setFavorites([...favorites, park])
+  function isFavorite() {
+    return favorites.some((favorite) => favorite.parkCode === park.parkCode);
+  }
+
+  function toggleFavorite() {
+    if (isFavorite()) {
+      const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
+      setFavorites(updatedFavorites);
+    } else {
+      setFavorites([...favorites, park]);
+    }
   }
 
   return (
@@ -43,7 +52,7 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
             </div>
           ))}
         </div>
-        <button className='favorite-button' onClick={addToFavorites}>⭐️</button> 
+        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}></button> 
       </div>
     </Link>
   );
