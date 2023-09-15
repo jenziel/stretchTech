@@ -2,28 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import { getIndividualPark, ParkData } from '../../ApiCalls';
+import Activities from './Activities';
+import RandomImage from './RandomImage';
+import AdditionalInfo from './AdditionalInfo';
+import EntranceFees from './EntranceFees';
 import './ParkDetails.css';
 
 function ParkDetails() {
   const { parkCode } = useParams<{ parkCode: string }>();
   const [park, setPark] = useState<ParkData | null>(null);
+  const [visibleFees, setVisibleFees] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
     if (!parkCode) return;
-    console.log('Fetching data for park with parkCode:', parkCode); //console. don't forget to delete
     getIndividualPark(parkCode)
       .then(data => {
-        console.log('Fetched data:', data); //console. 
         setPark(data);
       })
       .catch(error => {
-        console.error("Failed to fetch individual park:", error);//console. don't forget to delete
+        console.error("Failed to fetch individual park:", error);
       });
   }, [parkCode]);
+
+  const toggleFeeVisibility = (index: string) => {
+    setVisibleFees(prev => ({ ...prev, [index]: !prev[index] }));
+  };
 
   if (!park) {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
+
   const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
 
   return (
@@ -33,27 +41,13 @@ function ParkDetails() {
       <Link to="/" className="back-button">
         Back to Home
       </Link>
-      <div className="activities">
-        <h2>Activities</h2>
-        <ul>
-          {park.activities.map((activity) => (
-            <li key={activity.id}>{activity.name}</li>
-          ))}
-        </ul>
+      <div className="section-container">
+        <Activities activities={park.activities} />
+        <RandomImage randomImage={randomImage} />
+        <AdditionalInfo park={park} />
       </div>
-      <h2>Random Image</h2>
-      <div className="image-gallery">
-        {randomImage && <img
-          src={randomImage.url}
-          alt={randomImage.altText}
-          onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src = "/bearError.png";
-          }}
-        />}
-      </div>
+      <EntranceFees fees={park.entranceFees} toggleVisibility={toggleFeeVisibility} visibleFees={visibleFees} />
     </div>
   );
 }
-
 export default ParkDetails;
