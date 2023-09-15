@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('NPA - Park Details', () => {
     const parksUrl = "https://developer.nps.gov/api/v1/parks?limit=500&api_key=88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc";
 
@@ -14,13 +16,22 @@ describe('NPA - Park Details', () => {
     it('should display park details when a park card is clicked', () => {
         cy.get('.park-card').first().click();
         cy.url().should('include', '/park/');
-
-        // Now validate the details, activities, and facilities (replace these with actual CSS selectors)
         cy.get('.park-details h1').should('not.be.empty');
         cy.get('.activities ul').should('not.be.empty');
-        cy.get('.facilities ul').should('not.be.empty');
-        cy.get('.alerts ul').should('not.be.empty');
+        cy.get('.additional-info p').should('not.be.empty');
+
     });
+
+    it('should handle missing park details gracefully', () => {
+        cy.intercept('GET', parksUrl, {fixture: 'sampleParksMissingFields.json'}).as('getParksMissingFields');
+        cy.visit('http://localhost:3000/');
+        cy.wait('@getParksMissingFields');
+        
+        cy.get('.park-card').first().click();
+        cy.url().should('include', '/park/');
+        cy.get('.park-details h1').should('not.be.empty');
+    });
+    
 
 });
 
