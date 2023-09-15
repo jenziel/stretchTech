@@ -8,9 +8,17 @@
   overflow: auto;
 }
 
+.park-details h1,
+.park-details h2 {
+  margin-bottom: 16px;
+}
+
 .park-details h1 {
   font-size: 36px;
-  margin-bottom: 16px;
+}
+
+.park-details h2 {
+  font-size: 28px;
 }
 
 .park-details p {
@@ -19,27 +27,10 @@
   line-height: 1.6;
 }
 
-.park-details h2 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
-.park-details ul {
-  list-style: disc inside;
-  font-size: 18px;
-  margin-left: 24px;
-  margin-bottom: 24px;
-}
-
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-}
-
-.park-details .image-gallery div {
-  flex: 1;
-  max-width: calc(33.33% - 16px);
 }
 
 .image-gallery img {
@@ -48,117 +39,98 @@
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-} 
+}
 
+button,
 .back-button {
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 18px;
-  background-color: #4CAF50; 
-  color: #fff; 
+  background: linear-gradient(to bottom, #4caf50, #45a049);
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 8px 0;
+  border-radius: 25px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
   text-align: center;
+  text-decoration: none;
 }
 
+button:hover,
 .back-button:hover {
-  background-color: #45a049; 
+  background: linear-gradient(to bottom, #45a049, #4caf50);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
 }
 
-.back-button:focus {
+button:focus-visible,
+.back-button:focus-visible {
   outline: none;
+  box-shadow: 0 0 0 3px rgba(72, 239, 128, 0.5);
 }
 
-.park-details ul {
-  max-width: 80%; 
-  list-style: disc inside;
-  font-size: 18px;
-  margin-left: 24px;
-  margin-bottom: 24px;
-}
-
-.park-details li {
-  word-wrap: break-word; 
-}
-
-.activities {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;  
-  justify-content: flex-start;
-  max-width: 40%; 
-  margin-left: auto;  
-  border: 2px solid #ffffff;  
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.activities ul {
-  list-style: disc inside;
-  margin: 0;
-  padding: 0;
-}
-
-.activities li {
-  word-wrap: break-word; 
-  margin-bottom: 8px;
-}
+.entrance-fees,
+.activities,
 .additional-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  max-width: 80%; 
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px solid #ffffff;
+  max-width: 800px;
   padding: 16px;
-  border-radius: 8px;
-}
-
-.activities, .additional-info {
-  width: 100%; 
-  max-width: 800px;  
-  margin: 20px 0;  
-  padding: 16px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   border: 2px solid #ffffff;
   border-radius: 8px;
+  flex: 3;
+  margin: 20px;
+  min-width: 300px;
 }
 
-.additional-info h2 {
-  font-size: 28px;
+.additional-info h2,
+.additional-info p,
+.additional-info strong {
   margin-bottom: 16px;
-}
-
-.additional-info p {
   font-size: 18px;
-  margin-bottom: 16px;
-  line-height: 1.6;
 }
 
 .additional-info strong {
   font-weight: bold;
 }
 
+.additional-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.additional-info li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.random-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 20px;
+  min-width: 200px;
+}
+
 @media (max-width: 768px) {
   .park-details {
     font-size: 0.9em;
-    padding: 10px; 
+    padding: 10px;
   }
 
-  .activities, .additional-info {
+  .activities,
+  .additional-info {
     max-width: 100%;
-  }
-  .image-gallery div {
-    max-width: calc(50% - 16px);
-  }
-
-  .activities ul {
-    padding-left: 1em;
   }
 
   .image-gallery img {
