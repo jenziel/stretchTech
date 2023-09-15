@@ -25,7 +25,7 @@ function ParkDetails() {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
   }
   const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
-
+// facilities, and alerts, contact info, entrance fee
   return (
     <div className="park-details">
       <h1>{park.fullName}</h1>

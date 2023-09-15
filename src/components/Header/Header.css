@@ -12,6 +12,7 @@ header {
     padding-bottom: 0;
     margin-bottom: 0;
 }
+
 /* Media query for iPhones */
 @media (max-width: 768px) {
     header {
