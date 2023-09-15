@@ -52,7 +52,7 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
             </div>
           ))}
         </div>
-        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}>⭐️</button> 
+        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}></button> 
       </div>
     </Link>
   );
