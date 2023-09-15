@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ParkCards.css';
 
@@ -11,20 +10,27 @@ interface ParkProps {
 
 interface ParkCardsProps {
   park: ParkProps;
-  favorites: ParkProps[]; // Define favorites as a prop
+  favorites: ParkProps[];
   setFavorites: (favorites: ParkProps[]) => void;
 }
 
 function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
 
   if (!park || !park.images) {
     return <div>Error: Park information is not available.</div>;
   }
 
-  function addToFavorites() {
-    
-    setFavorites([...favorites, park])
+  function isFavorite() {
+    return favorites.some((favorite) => favorite.parkCode === park.parkCode);
+  }
+
+  function toggleFavorite() {
+    if (isFavorite()) {
+      const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
+      setFavorites(updatedFavorites);
+    } else {
+      setFavorites([...favorites, park]);
+    }
   }
 
   return (
@@ -45,7 +51,7 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
             </div>
           ))}
         </div>
-        <button className='favorite-button' onClick={addToFavorites}>⭐️</button> 
+        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}>⭐️</button> 
       </div>
     </Link>
   );

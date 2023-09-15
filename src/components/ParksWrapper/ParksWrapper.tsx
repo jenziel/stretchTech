@@ -13,7 +13,7 @@ function ParksWrapper({ parks, favorites, setFavorites }: ParksWrapperProps) {
   
   const natParkCards = parks.filter((park) => park.designation === 'National Park')
   const parkCards = natParkCards.map(park => {
-    console.log('park', park)
+    // console.log('park', park)
     return (
       <ParkCards
         park={park}
