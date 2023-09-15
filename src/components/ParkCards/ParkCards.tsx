@@ -35,10 +35,10 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
   }
 
   return (
-    <Link to={`/park/${park.parkCode}`} style={{ textDecoration: 'inherit' }}> 
-      <div className='park-card'>
-        <h3>{park.fullName}</h3>
-        <div className="image-gallery">
+    <Link to={`/park/${park.parkCode}`} style={{ color: 'white', textDecoration: 'inherit' }}> 
+    <div className='wrapper'>
+      <div className='park-card'> 
+        <div className="image-container">
           {park.images.slice(0, 1).map((image, index) => (
             <div key={index}>
               <img
@@ -52,8 +52,13 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
             </div>
           ))}
         </div>
-        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}></button> 
       </div>
+        <div className='park-card-lower'>
+        <h3>{park.fullName}</h3>
+        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}></button> 
+
+        </div>
+    </div>
     </Link>
   );
 }

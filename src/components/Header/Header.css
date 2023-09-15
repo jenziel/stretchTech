@@ -1,5 +1,5 @@
 header {
-    background-color: #D9F5E6;
+    background-color:#C8FBC7;
     height: 7vh;
     padding-left: 9vw;
     padding-right: 9vw;
@@ -8,7 +8,14 @@ header {
     align-items: center;
     justify-content: space-between;
     font-size: 20px;
-    color: #395144;
+    color: black;
     padding-bottom: 0;
     margin-bottom: 0;
+}
+
+/* Media query for iPhones */
+@media (max-width: 768px) {
+    header {
+        font-size: 16px; 
+    }
 }

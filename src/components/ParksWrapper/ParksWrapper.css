@@ -1,11 +1,13 @@
 .parks-container {
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 39px;
+  gap: 0px;
   padding: 40px;
   margin: auto;
-  max-width: 1200px;
-  background-color: #F4F1DE;
+  width: 100%;
+  /* max-width: 1200px; */
+  background-color: #16291b;
 }
 
 
@@ -22,10 +24,18 @@
   z-index: 2;
 }
 
+/* For desktop screens */
+@media (min-width: 769px) {
+  .parks-container {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 40px;
+  }
+}
 /* For tablet screens */
 @media (max-width: 768px) {
   .parks-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2,1fr);
     gap: 20px;
     padding: 20px;
   }
