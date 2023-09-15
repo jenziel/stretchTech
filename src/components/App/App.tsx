@@ -48,9 +48,9 @@ function App() {
           setIsLoading(false);
         }
       })
-      .catch((error: any) => {
-        console.log("Caught an error: ", error);  //console. delete after you are done
-        setError(error.message || "Failed to fetch parks!");
+      .catch((response: any) => {
+        console.log("Caught an error: ", response);  //console. delete after you are done
+        setError(response || "Failed to fetch parks!");
         console.log("newError state set to: ", newError);  //console. delete after you are done
         setIsLoading(false);
       });
@@ -64,6 +64,8 @@ function App() {
     console.log("newError updated to:", newError); 
   }, [newError]); 
   
+
+
   const renderError = () => {
     if (newError) {
       return <ErrorComponent error={{ message: newError }} />;
@@ -79,14 +81,14 @@ function App() {
         <LoadingComponent />
       ) : (
         <Routes>
+        <Route path="/" element={<ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
+        <Route path="/park/:parkCode" element={<ParkDetails setIsLoading={setIsLoading}/>} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="/404" element={<Error404 />} />
         <Route path="/500" element={<Error500 />} />
         <Route path="/test-500" element={<Error500 />} /> 
         <Route path="/error" element={<ErrorComponent error={{ message: newError }} />} />
-        <Route path="/" element={<ParksWrapper parks={parks} favorites={favorites} setFavorites={setFavorites} />} />
-        <Route path="/park/:parkCode" element={<ParkDetails />} />
-        <Route path="*" element={<Navigate to="/404" />} />
-        <Route path="/404" element={<Error404 />} />
       </Routes>      
       )}
     </main>

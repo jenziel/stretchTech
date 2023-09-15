@@ -9,12 +9,6 @@
   height: 275px;
 }
 
-.park-card:hover {
-  /* padding: 15px;
-  transform: scale(1.05); */
-  /* box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.3), 0 0 10px 5px rgba(0, 255, 0, 0.3); */
-  transition: background-color 0.3s ease
-  }
 
 .no-underline {
   text-decoration: none;
@@ -32,7 +26,6 @@
   flex: 1;
 }
 
-/* .park-card .image-container img  */
 .image-container img 
 {
   /* max-width: 100%;
@@ -48,27 +41,23 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* .park-card .image-gallery img:hover {
-  /* transform: scale(1.1); */
-/* } */ 
 
 .favorite-button {
   background-image: url('../../images/parkbutton.png');
   background-size: cover;
-  height: 2.5rem; 
+  background-color:white;
+  height: 2.5rem;
   width: 2.5rem;
   border-radius: 0.45rem;
-  background-color: white;
-  /* z-index: 2; */
-  /* margin-right: 3rem; */
 }
-/* .favorite-button:hover {
-  transform:
+
+/* .favorite-button.favorite {
+  background-color: rgba(163, 255, 182, 0.5); 
 } */
 
+
 .favorite-button.favorite {
-  background-color: #2b783a; 
-  /* z-index: 1; */
+  background-color: #6af568; 
 }
 
 @media (max-width: 768px) {

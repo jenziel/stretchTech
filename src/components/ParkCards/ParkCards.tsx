@@ -13,9 +13,10 @@ interface ParkCardsProps {
   park: ParkProps;
   favorites: ParkProps[];
   setFavorites: (favorites: ParkProps[]) => void;
+
 }
 
-function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
+function ParkCards({ park, favorites, setFavorites}: ParkCardsProps) {
 
   if (!park || !park.images) {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
@@ -25,7 +26,8 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
     return favorites.some((favorite) => favorite.parkCode === park.parkCode);
   }
 
-  function toggleFavorite() {
+  function toggleFavorite(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault()
     if (isFavorite()) {
       const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
       setFavorites(updatedFavorites);
@@ -33,6 +35,7 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
       setFavorites([...favorites, park]);
     }
   }
+
 
   return (
     <Link to={`/park/${park.parkCode}`} style={{ color: 'white', textDecoration: 'inherit' }}> 
