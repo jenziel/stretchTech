@@ -26,7 +26,8 @@ function ParkCards({ park, favorites, setFavorites}: ParkCardsProps) {
     return favorites.some((favorite) => favorite.parkCode === park.parkCode);
   }
 
-  function toggleFavorite() {
+  function toggleFavorite(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault()
     if (isFavorite()) {
       const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
       setFavorites(updatedFavorites);
