@@ -13,9 +13,10 @@ interface ParkCardsProps {
   park: ParkProps;
   favorites: ParkProps[];
   setFavorites: (favorites: ParkProps[]) => void;
+
 }
 
-function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
+function ParkCards({ park, favorites, setFavorites}: ParkCardsProps) {
 
   if (!park || !park.images) {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
@@ -33,6 +34,7 @@ function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
       setFavorites([...favorites, park]);
     }
   }
+
 
   return (
     <Link to={`/park/${park.parkCode}`} style={{ textDecoration: 'inherit' }}> 

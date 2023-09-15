@@ -8,17 +8,22 @@ import AdditionalInfo from './AdditionalInfo';
 import EntranceFees from './EntranceFees';
 import './ParkDetails.css';
 
-function ParkDetails() {
+interface ParkDetailsProps {
+  setIsLoading: (isLoading: boolean) => void;
+}
+function ParkDetails({setIsLoading}: ParkDetailsProps) {
   const { parkCode } = useParams<{ parkCode: string }>();
   const [park, setPark] = useState<ParkData | null>(null);
   const [visibleFees, setVisibleFees] = useState<{ [key: string]: boolean }>({});
-
+  // setIsLoading(true)
   useEffect(() => {
     if (!parkCode) return;
     getIndividualPark(parkCode)
       .then(data => {
-        setPark(data);
+        setPark(data)
+        setIsLoading(false);
       })
+      // .then(() => setIsLoading(false))
       .catch(error => {
         console.error("Failed to fetch individual park:", error);
       });
@@ -28,8 +33,9 @@ function ParkDetails() {
     setVisibleFees(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
-  if (!park) {
+  if (!park ) {
     return <ErrorComponent error={{ message: "Park information is not available." }} />;
+
   }
 
   const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
