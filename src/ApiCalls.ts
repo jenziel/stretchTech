@@ -98,7 +98,8 @@ export function getParksData(): Promise<ApiResponse> {
   return fetch(`${API_BASE}parks?limit=500&api_key=${API_KEY}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error(response.status.toString());
+        console.log(response)
+        throw new Error(`${response.status}`);
       }
       return response.json();
     });
@@ -109,7 +110,7 @@ export function getIndividualPark(parkCode: string): Promise<ParkData> {
   return fetch(`${API_BASE}parks?parkCode=${parkCode}&api_key=${API_KEY}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error(response.status.toString());
+        throw new Error(`${response.status}`);
       }
       return response.json();
     })

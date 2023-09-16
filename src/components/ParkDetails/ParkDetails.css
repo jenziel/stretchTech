@@ -3,14 +3,9 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #16291b;
-  color: #ffffff;
-  overflow: auto;
-  /* justify-content: center;
-  height: 100vh;
   background-color: white;
-  color: black;
-  padding: 40px; */
+  color: #16291b;
+  overflow: auto;
 }
 
 .park-details h1,
@@ -32,13 +27,8 @@
   line-height: 1.6;
 }
 
-.image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
 
-.image-gallery img {
+.park-image img {
   object-fit: cover;
   width: 50%;
   height: auto;
@@ -61,7 +51,6 @@
   text-align: center;
   text-decoration: none;
 }
-
 
 .back-button:hover {
   background: linear-gradient(to bottom, #45a049, #4caf50);
@@ -106,6 +95,11 @@ button:focus-visible,
   padding: 0;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 .additional-info li {
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
@@ -138,7 +132,7 @@ button:focus-visible,
     max-width: 100%;
   }
 
-  .image-gallery img {
+  .park-image img {
     width: 100%;
   }
 }
