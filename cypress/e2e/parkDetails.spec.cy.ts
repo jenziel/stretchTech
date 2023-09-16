@@ -9,7 +9,6 @@ describe('Happy Path - Park Details', () => {
     cy.intercept('GET', individualParkUrl, { fixture: 'sampleParks.json' }).as('getPark');
     cy.visit('http://localhost:3000/');
     cy.contains('.LoadingComponent').should('not.exist');
-    // cy.wait('@getPark');
     cy.get('.park-card', { timeout: 10000 }).first().click();
   });
 
