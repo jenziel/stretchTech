@@ -14,7 +14,7 @@ describe('Happy Path - Park Details', () => {
 
 
     it('should display a non-empty park full name', () => {
-      cy.get('.park-details > h1')
+      cy.get('.park-description')
     });
 
     it('should display a non-empty park description', () => {
@@ -42,7 +42,7 @@ describe('Happy Path - Park Details', () => {
     });
 
     it('should display a non-empty directions URL', () => {
-      cy.get('.additional-info > :nth-child(7)')
+      cy.get('.additional-info > :nth-child(3)')
     });
 
     it('should display non-empty operating hours', () => {
