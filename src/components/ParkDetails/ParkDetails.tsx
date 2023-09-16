@@ -6,8 +6,7 @@ import Activities from './Activities';
 import RandomImage from './RandomImage';
 import AdditionalInfo from './AdditionalInfo';
 import EntranceFees from './EntranceFees';
-import LoadingComponent from '../LoadingComponent/LoadingComponent';
-
+import LoadingComponent from '../LoadingComponent/LoadingComponent'
 import './ParkDetails.css';
 
 interface ParkDetailsProps {
