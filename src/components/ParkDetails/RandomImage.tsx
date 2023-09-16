@@ -9,8 +9,7 @@ type RandomImageProps = {
 
 function RandomImage({ randomImage }: RandomImageProps) {
   return (
-    <div className="image-gallery">
-      <h2>Random Image</h2>
+    <div className='park-image-container'>
       {randomImage && (
         <img
           src={randomImage.url}

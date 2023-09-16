@@ -1,16 +1,80 @@
 .park-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   padding: 20px;
-  background-color: #16291b;
-  color: #ffffff;
+  background-color: white;
+  color: #16291b;
   overflow: auto;
+  padding-left: 20px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.show-fees-btn,
+.back-button {
+  margin-left: 10vw;
+  background: linear-gradient(to bottom, #90fd9b, #5ce069);
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  margin: 8px 0;
+  border-radius: 25px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+}
+.show-fees-btn:hover,
+.back-button:hover {
+  background: linear-gradient(to bottom, #45a049, #4caf50);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
+}
+
+button:focus-visible,
+.back-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(72, 239, 128, 0.5);
+}
+
+.park-image-container {
+  width: 70vw;
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.top-section-container {
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.park-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.image-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
 }
 
 .park-details h1,
 .park-details h2 {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  margin-top: 0px;
 }
 
 .park-details h1 {
@@ -24,78 +88,31 @@
 .park-description {
   display: grid;
   place-items: center;
-  height: 100%; 
+  height: 100%;
   text-align: center;
   font-size: 18px;
   margin-bottom: 24px;
   line-height: 1.6;
 }
 
-.container {
-  display: flex;
-  justify-content: center; 
-  align-items: center;      
-}
-
-.image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.image-gallery img {
-  object-fit: cover;
-  width: 50%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.park-details>button,
-.park-details>.back-button {
-  background: linear-gradient(to bottom, #4caf50, #45a049);
-  color: #ffffff;
-  border: none;
-  padding: 12px 24px;
-  margin: 8px 0;
-  border-radius: 25px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  text-decoration: none;
-}
-
-
-.back-button:hover {
-  background: linear-gradient(to bottom, #45a049, #4caf50);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
-}
-
-button:focus-visible,
-.back-button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(72, 239, 128, 0.5);
-}
-
+.contact-us,
 .entrance-fees,
 .activities,
 .additional-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 800px;
+  width: 34vw;
   padding: 16px;
+  background-color: lightgray;
   box-sizing: border-box;
-  border: 2px solid #ffffff;
+  border: 2px solid #16291b;
   border-radius: 8px;
   flex: 3;
-  margin: 20px;
-  min-width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
-.additional-info h2,
 .additional-info p,
 .additional-info strong {
   margin-bottom: 16px;
@@ -112,24 +129,27 @@ button:focus-visible,
 }
 
 .additional-info li {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #16291b;
   padding: 10px 0;
 }
-
-.section-container {
+.fee-list {
   display: flex;
+  flex-direction: column;
+}
+.fee-list > button {
+  width: 50%;
+}
+.lower-section-container {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.random-image {
+.left-side,
+.right-side {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  margin: 20px;
-  min-width: 200px;
+  flex-direction: row;
 }
 
 @media (max-width: 768px) {
@@ -139,11 +159,19 @@ button:focus-visible,
   }
 
   .activities,
-  .additional-info {
-    max-width: 100%;
-  }
-
-  .image-gallery img {
+  .additional-info,
+  .contact-us,
+  .entrance-fees {
     width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .left-side,
+  .right-side {
+    flex-direction: column;
+    width: 100%;
+  }
+  .park-image-container {
+    height: auto;
   }
 }

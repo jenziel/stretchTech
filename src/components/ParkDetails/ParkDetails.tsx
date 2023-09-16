@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import ErrorComponent from '../ErrorComponent/ErrorComponent';
-import { getIndividualPark, ParkData } from '../../ApiCalls';
-import Activities from './Activities';
-import RandomImage from './RandomImage';
-import AdditionalInfo from './AdditionalInfo';
-import EntranceFees from './EntranceFees';
+
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { getIndividualPark, ParkData } from "../../ApiCalls";
+import Activities from "./Activities";
+import RandomImage from "./RandomImage";
+import AdditionalInfo from "./AdditionalInfo";
+import EntranceFees from "./EntranceFees";
+import ContactUs from "./ContactUs";
+import "./ParkDetails.css";
 import LoadingComponent from '../LoadingComponent/LoadingComponent'
-import './ParkDetails.css';
 
 interface ParkDetailsProps {
   setIsLoading: (isLoading: boolean) => void;
 }
+
 function ParkDetails({setIsLoading}: ParkDetailsProps) {
   
   const { parkCode } = useParams<{ parkCode: string }>();
@@ -21,8 +24,8 @@ function ParkDetails({setIsLoading}: ParkDetailsProps) {
   useEffect(() => {
     if (!parkCode) return;
     getIndividualPark(parkCode)
-      .then(data => {
-        setPark(data)
+      .then((data) => {
+        setPark(data);
         setIsLoading(false);
       })
       .catch(error => {
@@ -31,7 +34,7 @@ function ParkDetails({setIsLoading}: ParkDetailsProps) {
   }, [parkCode]);
 
   const toggleFeeVisibility = (index: string) => {
-    setVisibleFees(prev => ({ ...prev, [index]: !prev[index] }));
+    setVisibleFees((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   if (park === null) {
@@ -43,18 +46,36 @@ function ParkDetails({setIsLoading}: ParkDetailsProps) {
   
   const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
   return (
-    <div className="park-details">
-      <h1>{park.fullName}</h1>
-      <p className="park-description">{park.description}</p>
-      <Link to="/" className="back-button">
-        Back to Home
-      </Link>
-      <div className="section-container">
-        <Activities activities={park.activities} />
-        <RandomImage randomImage={randomImage} />
-        <AdditionalInfo park={park} />
+    <div className='park-details'>
+      <div className='button-container'>
+        <Link to='/' className='back-button'>
+          Back to Home
+        </Link>
       </div>
-      <EntranceFees fees={park.entranceFees} toggleVisibility={toggleFeeVisibility} visibleFees={visibleFees} />
+      <div className='image-section'>
+        <RandomImage randomImage={randomImage} />
+        <h1 className='park-description'>{park.fullName}</h1>
+        <div className='top-section-container'>
+          <p>
+            <strong>Location:</strong> {park.states}
+          </p>
+          <p>{park.description}</p>
+          <div className='lower-section-container'>
+            <div className='left-side'>
+              <Activities activities={park.activities} />
+              <AdditionalInfo park={park} />
+            </div>
+            <div className='right-side'>
+              <ContactUs park={park} />
+              <EntranceFees
+                fees={park.entranceFees}
+                toggleVisibility={toggleFeeVisibility}
+                visibleFees={visibleFees}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

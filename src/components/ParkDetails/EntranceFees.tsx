@@ -10,15 +10,24 @@ type EntranceFeesProps = {
   visibleFees: { [key: string]: boolean };
 };
 
-function EntranceFees({ fees, toggleVisibility, visibleFees }: EntranceFeesProps) {
+function EntranceFees({
+  fees,
+  toggleVisibility,
+  visibleFees,
+}: EntranceFeesProps) {
   return (
-    <div className="entrance-fees">
+    <div className='entrance-fees'>
       <h2>Entrance Fees</h2>
       <ul>
         {fees.map((fee, index) => (
-          <li key={index}>
-            <strong>{fee.title} - ${fee.cost}</strong>
-            <button onClick={() => toggleVisibility(index.toString())}>
+          <li key={index} className='fee-list'>
+            <strong>
+              {fee.title} - ${fee.cost}
+            </strong>
+            <button
+              className='show-fees-btn'
+              onClick={() => toggleVisibility(index.toString())}
+            >
               {visibleFees[index] ? "Hide Details" : "Show Details"}
             </button>
             {visibleFees[index] && <p>{fee.description}</p>}

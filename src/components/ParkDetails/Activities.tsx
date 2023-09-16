@@ -9,7 +9,7 @@ type ActivitiesProps = {
 
 function Activities({ activities }: ActivitiesProps) {
   return (
-    <div className="activities">
+    <div className='activities'>
       <h2>Activities</h2>
       <ul>
         {activities.map((activity) => (

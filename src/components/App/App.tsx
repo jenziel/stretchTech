@@ -50,7 +50,7 @@ function App() {
       })
       .catch((response: any) => {
         console.log("Caught an error: ", response);  //console. delete after you are done
-        setError(response || "Failed to fetch parks!");
+        setError(`${response}` || "Failed to fetch parks!");
         console.log("newError state set to: ", newError);  //console. delete after you are done
         setIsLoading(false);
       });
