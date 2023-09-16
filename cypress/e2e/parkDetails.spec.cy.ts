@@ -6,10 +6,15 @@ describe('Happy Path - Park Details', () => {
   const individualParkUrl = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc';
 
   beforeEach(() => {
+    cy.intercept('GET', parksUrl, { fixture: 'sampleParks.json' }).as('getParks');
     cy.intercept('GET', individualParkUrl, { fixture: 'sampleParks.json' }).as('getPark');
     cy.visit('http://localhost:3000/');
-    cy.contains('.LoadingComponent').should('not.exist');
-    cy.get('.park-card', { timeout: 10000 }).first().click();
+    cy.wait('@getParks');
+    cy.contains(".LoadingComponent").should("not.exist");
+    cy.get(".parks-container").should("be.visible");
+    cy.get('.park-card').first().click();
+    // cy.url().should('eq', "http://localhost:3000/park/acad");
+    // cy.wait('@getPark')
   });
 
 
@@ -34,7 +39,7 @@ describe('Happy Path - Park Details', () => {
     });
 
     it('should display non-empty contacts', () => {
-      cy.get('.contacts').should('not.be.empty');
+      cy.get('contact-phone-number').should('not.be.empty');
     });
 
     it('should display non-empty entrance fees', () => {
@@ -57,6 +62,9 @@ describe('Happy Path - Park Details', () => {
       cy.get('.images').should('not.be.empty');
     });
 
+    it('should display non-empty email address', () => {
+        cy.get('.contact-email').should('not.be.empty');
+      });
   });
 
 describe('Sad Path - Park Details', () => {
