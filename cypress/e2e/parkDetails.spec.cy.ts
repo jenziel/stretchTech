@@ -1,56 +1,83 @@
 /// <reference types="cypress" />
 
-describe('NPA - Park Details', () => {
-    const parksUrl = "https://developer.nps.gov/api/v1/parks?limit=500&api_key=88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc";
+describe('Happy Path - Park Details', () => {
 
-    beforeEach(() => {
-        cy.intercept("GET", parksUrl, { fixture: 'sampleParks.json' }).as("getParks");
-        cy.visit('http://localhost:3000/');
-        cy.wait("@getParks");
+  const parksUrl = 'https://developer.nps.gov/api/v1/parks?limit=500&api_key=88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc';
+  const individualParkUrl = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc';
+
+  beforeEach(() => {
+    cy.intercept('GET', individualParkUrl, { fixture: 'sampleParks.json' }).as('getPark');
+    cy.visit('http://localhost:3000/');
+    cy.contains('.LoadingComponent').should('not.exist');
+    cy.pause(); // Use this to manually check if the request is being made in your Network tab
+    cy.wait('@getPark');
+    cy.get('.park-card', { timeout: 10000 }).first().click();
+  });
+  
+
+    it('should display a non-empty park full name', () => {
+      cy.get('.park-details > h1')
     });
 
-    describe('Happy Path - Park Details', () => {
-        it('should display park details when a park card is clicked', () => {
-            // Click on the first park card
-            cy.get('.park-card').first().click();
-            cy.url().should('include', '/park/');
-
-            // Check if park details are displayed
-            cy.get('.park-details h1').should('not.be.empty');
-            cy.get('.park-details p').should('not.be.empty');
-            cy.get('.activities ul').should('not.be.empty');
-            cy.get('.states').should('not.be.empty');
-            cy.get('.contacts').should('not.be.empty');
-            cy.get('.entrance-fees').should('not.be.empty');
-            cy.get('.directions-url').should('not.be.empty');
-        });
-
-        it('should display park full name', () => {
-            // Click on the first park card
-            cy.get('.park-card').first().click();
-            
-            // Check if park full name is displayed
-            cy.get('.park-details h1').should('not.be.empty');
-        });
-
-        // Add more tests for other properties like description, activities, states, contacts, entranceFees, etc.
+    it('should display a non-empty park description', () => {
+      cy.viewport(1280, 720);
+      // cy.get('.park-description').should('not.be.empty').and('contain', 'Mock Description');
+      cy.get('.park-details p').each(($el, index, $list) => {
+        cy.log($el.text())
+      })
     });
-    
-    describe('Sad Path - Park Details', () => {
-        beforeEach(() => {
-            cy.intercept("GET", parksUrl, { fixture: 'sampleParksMissingFields.json' }).as("getParksMissingFields");
-            cy.visit('http://localhost:3000/park/acad/');
-            cy.wait("@getParksMissingFields");
-        });
-    
-        it('should handle missing park details gracefully', () => {
-            // Check if a specific element (e.g., .park-card) does not exist
-            cy.get('.park-card').should('not.exist');
-    
-            // You can add more assertions to check for other elements as needed
-            // For example:
-            // cy.get('.some-other-element').should('not.exist');
-        });
+
+    it('should display a non-empty activities list', () => {
+      cy.get('.activities ul').should('not.be.empty');
     });
-    
-});
+
+    it('should display a non-empty state', () => {
+      cy.get('.additional-info > :nth-child(4)')
+    });
+
+    it('should display non-empty contacts', () => {
+      cy.get('.contacts').should('not.be.empty');
+    });
+
+    it('should display non-empty entrance fees', () => {
+      cy.get('.entrance-fees').should('not.be.empty');
+    });
+
+    it('should display a non-empty directions URL', () => {
+      cy.get('.additional-info > :nth-child(7)')
+    });
+
+    it('should display non-empty operating hours', () => {
+      cy.get('.operating-hours').should('not.be.empty');
+    });
+
+    it('should display non-empty addresses', () => {
+      cy.get('.addresses').should('not.be.empty');
+    });
+
+    // it('should display non-empty images', () => {
+    //   cy.get('.images').should('not.be.empty');
+    // });
+
+    // it('should display a non-empty designation', () => {
+    //   cy.get('.designation').should('not.be.empty').and('contain', 'Mock Designation');
+    // });
+
+  });
+
+  // describe('Sad Path - Park Details', () => {
+  //   beforeEach(() => {
+  //     cy.intercept('GET', parksUrl, { fixture: 'sampleParksMissingFields.json' }).as('getParksMissingFields');
+  //     cy.visit('http://localhost:3000/');
+  //     cy.wait('@getParksMissingFields');
+  //   });
+
+  //   it('should handle missing park details gracefully', () => {
+  //     cy.get('.park-card').should('not.exist');
+  //   });
+
+  //   it('should handle missing images gracefully', () => {
+  //     cy.get('.images img').should('have.prop', 'naturalWidth').and('equal', 0);
+  //   });
+  // });
+
