@@ -3,7 +3,7 @@
   color: #1b5e20;
   text-align: center;
   padding: 4rem;
-  height: calc(100vh - 8rem);  /* Adjusted for padding */
+  height: calc(100vh - 8rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@
 .error-msg h3 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  word-wrap: break-word;  /* To break text and wrap onto the next line */
+  word-wrap: break-word;
 }
 
 .fact-box {
