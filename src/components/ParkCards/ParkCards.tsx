@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import ErrorComponent from '../ErrorComponent/ErrorComponent'; 
-import './ParkCards.css';
+import { Link } from "react-router-dom";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import "./ParkCards.css";
 
 interface ParkProps {
   parkCode: string;
@@ -13,38 +13,46 @@ interface ParkCardsProps {
   park: ParkProps;
   favorites: ParkProps[];
   setFavorites: (favorites: ParkProps[]) => void;
-
 }
 
-function ParkCards({ park, favorites, setFavorites}: ParkCardsProps) {
-
+function ParkCards({ park, favorites, setFavorites }: ParkCardsProps) {
   if (!park || !park.images) {
-    return <ErrorComponent error={{ message: "Park information is not available." }} />;
+    return (
+      <ErrorComponent
+        error={{ message: "Park information is not available." }}
+      />
+    );
   }
 
   function isFavorite() {
     return favorites.some((favorite) => favorite.parkCode === park.parkCode);
   }
 
-  function toggleFavorite(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    event.preventDefault()
+  function toggleFavorite(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    event.preventDefault();
     if (isFavorite()) {
-      const updatedFavorites = favorites.filter((favorite) => favorite.parkCode !== park.parkCode);
+      const updatedFavorites = favorites.filter(
+        (favorite) => favorite.parkCode !== park.parkCode
+      );
       setFavorites(updatedFavorites);
     } else {
       setFavorites([...favorites, park]);
     }
   }
 
-
   return (
-    <Link to={`/park/${park.parkCode}`} style={{ color: 'white', textDecoration: 'inherit' }}> 
-    <div className='wrapper'>
-      <div className='park-card'> 
-        <div className="image-container">
+    <Link
+      to={`/park/${park.parkCode}`}
+      style={{ color: "white", textDecoration: "inherit" }}
+    >
+      <div className='wrapper'>
+        <div className='park-card'>
           {park.images.slice(0, 1).map((image, index) => (
-            <div key={index}>
+            <div className='park-card-img' key={index}>
               <img
+                className='park-card-img'
                 src={image.url}
                 alt={image.altText}
                 onError={(e) => {
@@ -55,13 +63,14 @@ function ParkCards({ park, favorites, setFavorites}: ParkCardsProps) {
             </div>
           ))}
         </div>
-      </div>
         <div className='park-card-lower'>
-        <h3>{park.fullName}</h3>
-        <button className={`favorite-button ${isFavorite() ? 'favorite' : ''}`} onClick={toggleFavorite}></button> 
-
+          <h3>{park.fullName}</h3>
+          <button
+            className={`favorite-button ${isFavorite() ? "favorite" : ""}`}
+            onClick={toggleFavorite}
+          ></button>
         </div>
-    </div>
+      </div>
     </Link>
   );
 }

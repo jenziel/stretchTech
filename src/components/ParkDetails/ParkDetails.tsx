@@ -6,13 +6,12 @@ import Activities from "./Activities";
 import RandomImage from "./RandomImage";
 import AdditionalInfo from "./AdditionalInfo";
 import EntranceFees from "./EntranceFees";
+import ContactUs from "./ContactUs";
 import "./ParkDetails.css";
-
 
 interface ParkDetailsProps {
   setIsLoading: (isLoading: boolean) => void;
 }
-
 
 function ParkDetails({ setIsLoading }: ParkDetailsProps) {
   const { parkCode } = useParams<{ parkCode: string }>();
@@ -46,7 +45,8 @@ function ParkDetails({ setIsLoading }: ParkDetailsProps) {
     );
   }
 
-  const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
+  const randomImage =
+    park && park.images[Math.floor(Math.random() * park.images.length)];
   return (
     <div className='park-details'>
       <div className='button-container'>
@@ -54,20 +54,30 @@ function ParkDetails({ setIsLoading }: ParkDetailsProps) {
           Back to Home
         </Link>
       </div>
-
-      <RandomImage randomImage={randomImage} />
-      <h1>{park.fullName}</h1>
-      <p><strong>Location:</strong> {park.states}</p>
-      <p>{park.description}</p>
-      <div className='section-container'>
-        <Activities activities={park.activities} />
-        <AdditionalInfo park={park} />
+      <div className='image-section'>
+        <RandomImage randomImage={randomImage} />
+        <h1 className='park-description'>{park.fullName}</h1>
+        <div className='top-section-container'>
+          <p>
+            <strong>Location:</strong> {park.states}
+          </p>
+          <p>{park.description}</p>
+          <div className='lower-section-container'>
+            <div className='left-side'>
+              <Activities activities={park.activities} />
+              <AdditionalInfo park={park} />
+            </div>
+            <div className='right-side'>
+              <ContactUs park={park} />
+              <EntranceFees
+                fees={park.entranceFees}
+                toggleVisibility={toggleFeeVisibility}
+                visibleFees={visibleFees}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <EntranceFees
-        fees={park.entranceFees}
-        toggleVisibility={toggleFeeVisibility}
-        visibleFees={visibleFees}
-      />
     </div>
   );
 }

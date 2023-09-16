@@ -1,4 +1,3 @@
-import './RandomImage.css'
 type Image = {
   url: string;
   altText: string;
@@ -10,7 +9,7 @@ type RandomImageProps = {
 
 function RandomImage({ randomImage }: RandomImageProps) {
   return (
-    <div className="park-image">
+    <div className='park-image-container'>
       {randomImage && (
         <img
           src={randomImage.url}

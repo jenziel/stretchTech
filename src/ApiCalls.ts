@@ -90,29 +90,30 @@ interface ApiResponse {
   data: ParkData[];
 }
 
-const API_BASE = 'https://developer.nps.gov/api/v1/';
-const API_KEY = '88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc';
+const API_BASE = "https://developer.nps.gov/api/v1/";
+const API_KEY = "88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc";
 
 export function getParksData(): Promise<ApiResponse> {
-  return fetch(`${API_BASE}parks?limit=500&api_key=${API_KEY}`)
-    .then(response => {
+  return fetch(`${API_BASE}parks?limit=500&api_key=${API_KEY}`).then(
+    (response) => {
       if (!response.ok) {
-        console.log(response)
         throw new Error(`${response.status}`);
       }
+
       return response.json();
-    });
+    }
+  );
 }
 
 export function getIndividualPark(parkCode: string): Promise<ParkData> {
   return fetch(`${API_BASE}parks?parkCode=${parkCode}&api_key=${API_KEY}`)
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`${response.status}`);
       }
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       if (data && data.data && data.data.length > 0) {
         return data.data[0];
       }

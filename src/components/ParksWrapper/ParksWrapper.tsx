@@ -5,21 +5,20 @@ import HeroImage from "../HeroImage/HeroImage";
 
 interface ParksWrapperProps {
   parks: ParkProps[];
-  favorites: ParkProps[]; // Define favorites as a prop
-  setFavorites: (favorites: ParkProps[]) => void; // Define setFavorites as a prop if needed
-
+  favorites: ParkProps[];
+  setFavorites: (favorites: ParkProps[]) => void;
 }
 
-function ParksWrapper({ parks, favorites, setFavorites}: ParksWrapperProps) {
-  
-  const natParkCards = parks.filter((park) => park.designation === 'National Park')
-  const parkCards = natParkCards.map(park => {
-    // console.log('park', park)
+function ParksWrapper({ parks, favorites, setFavorites }: ParksWrapperProps) {
+  const natParkCards = parks.filter(
+    (park) => park.designation === "National Park"
+  );
+  const parkCards = natParkCards.map((park) => {
     return (
       <ParkCards
         park={park}
         key={park.parkCode}
-        favorites={favorites} // Pass favorites as a prop
+        favorites={favorites}
         setFavorites={setFavorites}
       />
     );

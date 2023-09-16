@@ -6,22 +6,7 @@
   padding: 40px;
   margin: auto;
   width: 100%;
-  /* max-width: 1200px; */
   background-color: #16291b;
-}
-
-
-.parks-container > div {
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  z-index: 1;
-}
-
-.parks-container > div:hover,
-.parks-container > div:focus {
-  transform: scale(1.05) translateY(-10px);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
-  z-index: 2;
 }
 
 /* For desktop screens */
