@@ -13,8 +13,8 @@ describe('Happy Path - Park Details', () => {
     cy.contains(".LoadingComponent").should("not.exist");
     cy.get(".parks-container").should("be.visible");
     cy.get('.park-card').first().click();
-    // cy.url().should('eq', "http://localhost:3000/park/acad");
-    // cy.wait('@getPark')
+    cy.url().should('eq', "http://localhost:3000/park/acad");
+    cy.wait('@getPark')
   });
 
 
@@ -24,7 +24,6 @@ describe('Happy Path - Park Details', () => {
 
     it('should display a non-empty park description', () => {
       cy.viewport(1280, 720);
-      // cy.get('.park-description').should('not.be.empty').and('contain', 'Mock Description');
       cy.get('.park-details p').each(($el, index, $list) => {
         cy.log($el.text())
       })
@@ -73,7 +72,6 @@ describe('Sad Path - Park Details', () => {
   beforeEach(() => {
     cy.intercept('GET', individualParkUrl, { fixture: 'sampleParksMissingFields.json' }).as('sampleParksMissingFields');
     cy.visit('http://localhost:3000/');
-    // cy.wait('@sampleParksMissingFields');
     cy.get('.park-card', { timeout: 10000 }).first().click();
   });
 
