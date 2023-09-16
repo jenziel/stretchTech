@@ -46,10 +46,7 @@ function ParkDetails({ setIsLoading }: ParkDetailsProps) {
     );
   }
 
-  const randomImage =
-    park && park.images[Math.floor(Math.random() * park.images.length)];
-
-
+  const randomImage = park && park.images[Math.floor(Math.random() * park.images.length)];
   return (
     <div className='park-details'>
       <div className='button-container'>

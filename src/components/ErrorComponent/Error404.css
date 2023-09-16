@@ -3,7 +3,6 @@
   color: #1b5e20;
   text-align: center;
   padding: 2em;
-  /* height: 100vh; */
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@
 .not-found-heading {
   font-size: 3em;
   margin-bottom: 1em;
-  /* margin-top: -90px; */
 }
 
 .not-found-handling h3 {
