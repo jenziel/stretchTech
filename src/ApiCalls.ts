@@ -93,7 +93,6 @@ interface ApiResponse {
 const API_BASE = 'https://developer.nps.gov/api/v1/';
 const API_KEY = '88uiVoPed9zuR3daHPnsrPxaYV0ZWsiqP66VvpSc';
 
-// Fetch all parks
 export function getParksData(): Promise<ApiResponse> {
   return fetch(`${API_BASE}parks?limit=500&api_key=${API_KEY}`)
     .then(response => {
@@ -104,7 +103,6 @@ export function getParksData(): Promise<ApiResponse> {
     });
 }
 
-// Fetch single park.
 export function getIndividualPark(parkCode: string): Promise<ParkData> {
   return fetch(`${API_BASE}parks?parkCode=${parkCode}&api_key=${API_KEY}`)
     .then(response => {
